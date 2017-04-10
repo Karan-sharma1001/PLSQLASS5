@@ -1,0 +1,202 @@
+1)
+
+
+
+
+create or replace procedure USER_QUERY_EMP(p_myeno emp.empno%type, p_myjob out emp.job%type,p_mysal out emp.sal%type) as
+
+    begin
+select sal,job into p_mysal,p_myjob from emp where empno=p_myeno;
+
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+
+
+declare
+a_myeno emp.empno%type:=&Enter_EMPNO;
+a_myjob emp.job%type;
+a_mysal emp.sal%type;
+
+begin
+
+USER_QUERY_EMP(a_myeno,a_myjob,a_mysal);
+if (a_myjob like '%' and a_mysal>=0)
+then
+
+dbms_output.put_line('salary of EMPNO '||a_myeno||' is'||a_mysal||' and job is '||a_myjob);
+end if; 
+end;
+/
+
+
+======================================================
+2)
+create or replace function USER_ANNUAL_COMP (p_myeno emp.empno%type, p_mycomm out emp.comm%type,p_mysal out emp.sal%type) return number as
+ann number;
+    begin
+select sal,comm into p_mysal,p_mycomm from emp where empno=p_myeno;
+ann:=(p_mysal+nvl(p_mycomm,0))*12;
+return ann;
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+
+declare
+a_myeno emp.empno%type:=&Enter_EMPNO;
+a_myjob emp.comm%type; 
+a_mysal emp.sal%type;
+an number;
+begin
+
+an:=USER_ANNUAL_COMP(a_myeno,a_mysal,a_myjob);
+
+dbms_output.put_line('salary of EMPNO '||a_myeno||' is'||a_mysal||' and commision is '||a_myjob||' Annual value = '||an);
+ 
+end;
+/
+
+
+
+declare
+a_myeno emp.empno%type:=&Enter_EMPNO;
+a_myjob emp.comm%type;
+a_mysal emp.sal%type;
+an number;
+begin
+
+an:=USER_ANNUAL_COMP(a_myeno,a_mysal,a_myjob);
+
+dbms_output.put_line('salary of EMPNO '||a_myeno||' is'||a_mysal||' and job is '||a_myjob||' Annual value = '||an);
+ 
+end;
+/
+
+
+=====================================================
+3)
+
+create or replace function USER_VALID_DEPTNO(p_dno number) return boolean as 
+de dept%rowtype;
+begin
+select * into de from dept where deptno=p_dno;
+return true;
+
+exception
+when no_data_found then
+return false;
+end;
+/
+
+
+create or replace procedure SHOW_STRENGTH(p_dno number) as
+cou number;
+a boolean;
+begin 
+a:=USER_VALID_DEPTNO(p_dno);
+if a then
+select count(empno) into cou from emp where deptno=p_dno;
+dbms_output.put_line('the no of employees in dept '||p_dno||' are '||cou);
+else 
+dbms_output.put_line('This department no '||p_dno||' Doesnt exist');
+end if;
+end;
+/
+
+============================================================================
+4)
+
+create or replace procedure SHOW_RECORDS(p_join date) as
+
+cursor c1(a date) is select * from emp where hiredate<a;
+begin
+
+ dbms_output.put_line('EMPLOYEE FIRST NAME	JOB	SALARY	DEPARTMENT');
+
+for v1 in c1(p_join)
+loop
+
+dbms_output.put_line(v1.ename||'	'||v1.job||'	'||v1.sal||'   '||v1.deptno);
+
+end loop;
+
+exception
+when no_data_found then
+dbms_output.put_line(' No employees Joined before date '||p_join);
+end;
+
+
+
+
+======================
+5)
+create or replace procedure ADD_EMPLOYEE (job_id emp.job%type, manager_id emp.mgr%type, hire_date date, salary emp.sal%type, commission emp.comm%type, department_id emp.deptno%type) as
+
+mg_id emp.mgr%type;
+begin
+
+if ((lower(job_id) like 'programmer' or lower(job_id) like 'accountant' or lower(job_id) like 'public accountant') and salary>800 )
+then
+select mgr into mg_id from emp where manager_id in (select empno from emp );
+
+insert into emp(empno,job,mgr,hiredate,sal,comm,deptno) values( (e_id.nextval),job_id, manager_id, hire_date, salary, commission ,department_id);
+end if;
+
+exception
+when no_data_found then
+dbms_output.put_line('invalid empno or manager not found' );
+end;
+
+=========================================
+7)
+
+create or replace procedure create_author_details(pri_authr_name varchar2, country varchar2, email_id  varchar2) as
+
+
+begin
+
+if ( email_id like '%@%.%' )
+then
+insert into scholars(pri_authr_id, pri_authr_nameta , countryta, email_idta) values("a||m.nextval", pri_authr_name ,country,email_id  );
+end if;
+
+
+end;
+=============================================================================================
+8)
+create or replace procedure prGenerateReport(movie_id1  varchar2) as
+
+name movie_details.movie_name%type;
+id booking.theatre_i%type;
+tic booking.NO_OF_TICKETS%type;
+cursor c1 is select b.sum(NO_OF_TICKETS),b.theartre_i ,m.movie_name into tic , id, name from booking b,movie_details m where b.movie_id=movie_id1 and b.movie_id=m.movie_id;
+begin
+
+
+
+
+
+
+=========================================================================
+9)
+create or replace type p_d as object (a varchar2(20),b varchar2(20));
+/
+
+create or replace procedure GET_DETAILS(P_BUS_NO varchar2) as
+p p_d;
+begin
+select bus_type,manufacturer into p.a,p.b  from bus where upper(bus_no) like p_bus_no;
+dbms_output.put_line(' Bus no is '||p_bus_no||' bus type is '||p.a||'  bus manufacturer is '||p.b);
+
+exception
+when no_data_found then
+dbms_output.put_line('No Data Found'|| ' INVALID BUS NUMBER');
+end;
+/
+
+declare 
+a p_d;

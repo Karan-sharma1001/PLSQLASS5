@@ -1,0 +1,246 @@
+1)
+
+create or replace package MANAGE_EMP_PACK  as  
+procedure HIRE_EMP(EMPNO1 emp.empno%type, ENAME1 emp.ename%type, JOB1 emp.job%type, MGR1 emp.mgr%type,HIREDATE1 emp.hiredate%type, SAL1 emp.sal%type,COMM1 emp.comm%type, DEPTNO1 emp.deptno%type) ;
+procedure FIRE_EMP (v_empno emp.empno%type);
+v_insert_cnt number;
+v_delete_cnt number;
+ 
+end;
+/
+
+
+
+create or replace package body MANAGE_EMP_PACK  as  
+
+function VALIDATE_EMP(v_empno emp.empno%type) return boolean as
+v_emp emp.empno%type;
+begin
+select empno into v_emp from emp where empno=v_empno ;
+return true;
+exception when no_data_found then
+return false;
+end;
+
+procedure HIRE_EMP (EMPNO1 emp.empno%type, ENAME1 emp.ename%type, JOB1 emp.job%type, MGR1 emp.mgr%type,HIREDATE1 emp.hiredate%type, SAL1 emp.sal%type,COMM1 emp.comm%type, DEPTNO1 emp.deptno%type )  as
+a boolean;
+begin
+a:=VALIDATE_EMP(EMPNO1) ;
+if (a) then
+dbms_output.put_line('The Employee Already Exists');
+else
+insert into emp values(EMPNO1 , ENAME1, JOB1,MGR1,HIREDATE1, SAL1 , COMM1 , DEPTNO1 );
+v_insert_cnt:=v_insert_cnt+1;
+end if;
+end;
+
+
+
+procedure FIRE_EMP (v_empno emp.empno%type) as
+a emp.empno%type;
+b boolean;
+begin 
+b:=VALIDATE_EMP(v_empno);
+if b then
+delete from emp where empno=v_empno;
+select empno into a from emp where empno=v_empno;
+v_delete_cnt:=v_delete_cnt+1;
+else
+dbms_output.put_line('Employee Not Found');
+end if;
+end;
+
+begin
+v_insert_cnt :=0;
+v_delete_cnt :=0;
+ 
+end;
+/
+
+=======================================================================================
+
+2)
+
+create or replace package MY_EMP_PACK   as  
+function GET_AVG_SAL(v_empno emp.empno%type) return number ;
+function GET_AVG_SAL(v_ename emp.ename%type) return number;
+end;
+/
+
+create or replace package body MY_EMP_PACK  as  
+
+function GET_AVG_SAL(v_empno emp.empno%type) return number  as
+salary emp.sal%type;
+begin
+select avg(sal) into salary from emp where deptno=(select deptno from emp where empno=v_empno);
+dbms_output.put_line('Employee found');
+return salary;
+
+exception
+when no_data_found then
+dbms_output.put_line('Employee Not found');
+end;
+
+
+
+
+function GET_AVG_SAL(v_ename emp.ename%type) return number as
+
+salary emp.sal%type;
+begin
+select avg(sal) into salary from emp where deptno=(select deptno from emp where ename=v_ename);
+dbms_output.put_line('Employee found');
+return salary;
+
+exception
+when no_data_found then
+dbms_output.put_line('Employee Not found');
+end;
+
+end;
+/
+
+===============================================
+
+3)
+
+create or replace package PLAN   as
+function Display_Plans(id1 number) return varchar2;
+end;
+/
+
+create or replace package body PLAN   as
+
+function find_Plans return number as
+fplan_id number;
+begin
+select plan_id into fplan_id from customers group by plan_id having count(plan_id)=(select max(count(plan_id)) from customers group by plan_id);
+return fplan_id;
+exception
+when others then
+dbms_output.put_line('ERROR OCCURED');
+return 0;
+end;
+
+ 
+function Display_Plans(id1 number) return varchar2 as
+id plans.plan_id%type;
+sid plans.service_id%type;
+name plans.plan_name%type;
+begin
+id:=find_plans();
+select  PLAN_NAME, service_id into name,sid from plans where plan_id=id1;
+dbms_output.put_line('The max used Plan id Is = '||id1||' Plan name is = '||name||' And service id is = '||sid);
+return name;
+
+exception
+when others then
+dbms_output.put_line('ERROR OCCURED');
+end;
+
+end;
+/
+
+
+=============================================================================
+4)
+Create or replace Package pkgDisplay_details as
+function fnDisplayStatus ( paperid publications.paper_id%type) return varchar2;
+procedure prDispCount (authorid publications.pri_authr_id%type,status publications.status%type)  ;
+end;
+/
+
+Create or replace Package body pkgDisplay_details as
+function fnDisplayStatus ( paperid publications.paper_id%type) return varchar2 as
+status_f publications.status%type;
+begin
+select status into status_f from publications where paper_id=paperid;
+return status_f;
+
+exception
+when no_data_found then
+return 'INVALID';
+end;
+
+procedure prDispCount (authorid publications.pri_authr_id%type,status publications.status%type)  as
+num number;
+begin
+ select count(paper_id) into num from publications where  lower(PRI_AUTHR_ID) like authorid and lower(status) like status;
+dbms_output.put_line('count is = '||num);
+
+exception
+when no_data_found then
+dbms_output.put_line('NO DATA FOUND');
+end;
+
+END;
+
+======================================================================
+5)
+
+Create or replace Package Movie_Pack as
+procedure prNewMovie(Movie_name varchar2,
+Language varchar2,
+Genre varchar2,
+Duration number,
+Date_of_release date);
+end;   
+/
+
+Create or replace Package body Movie_Pack as
+function fnGenerateMovieID return number as
+new number;
+begin
+select max(movie_id) into new from movie_details;
+new:=new+1;
+return new;
+end;
+
+procedure prNewMovie(Movie_name varchar2,Language varchar2,Genre varchar2,Duration number, Date_of_release date )
+as
+new number;
+begin
+new:= fnGenerateMovieID();
+insert into movie_details values(new,movie_name,language,genre,duration,date_of_release);
+dbms_output.put_line('1 Row inserted Succesfully into MOVIE_DETAILS' );
+exception
+when no_data_found then
+dbms_output.put_line('NO DATA FOUND');
+when others then
+dbms_output.put_line('ERROR OCCURED');
+end;
+
+END;
+
+=============================================================
+6)
+
+Create or replace Package PKG_TRANSPORTS as
+ROUTE_NOT_FOUND exception ;
+Procedure SHOW_DETAILS(ROUTE_NO route.routeno%type);
+end;
+/
+
+ 
+Create or replace Package body PKG_TRANSPORTS as
+
+
+Procedure SHOW_DETAILS(ROUTE_NO route.routeno%type) as
+  
+cursor c1(route_no) is select * from schedule where routeno=route_no; 
+begin
+for i in c1(route_no)
+loop
+exit when c1%notfound;
+dbms_output.put_line(i.SCHEDULE_ID); 
+end loop;
+exception
+when ROUTE_NOT_FOUND then
+dbms_output.put_line('NO ROUTE FOUND');
+when others then
+dbms_output.put_line('ERROR OCCURED');
+end;
+
+end;
+
+  
