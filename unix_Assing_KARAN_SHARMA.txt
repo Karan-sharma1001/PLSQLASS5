@@ -1,0 +1,937 @@
+login as: TR9_Unix
+Access denied
+TR9_Unix@10.10.3.160's password:
+Last login: Thu Feb 23 13:16:02 2017 from 10.10.86.13
+[TR9_Unix@unix ~]$ cd
+[TR9_Unix@unix ~]$ KS501632
+-bash: KS501632: command not found
+[TR9_Unix@unix ~]$ cd KS501632
+[TR9_Unix@unix KS501632]$ cd
+[TR9_Unix@unix ~]$ ls ~
+!             Apss        hardware       pooja1      shr            tempusers
+00501601      archana     hiii.c         pooja2      shraddha       test
+00501834      atul        hj             printer     shre.c         test1.doc
+123           b           h,mkdir        puja        shreyans       test2
+20120209      btwo        hyh            pw          shruti         test2.c
+223033        chid        india.txt      r1          shubham        test2.doc
+501636        data        input          r2          shubhamthosar  testmask
+a             data1       jhantu         Ravina      ShubhamThosar  testumask
+a1            data1.txt   karan501632    rd123       sim1           testumask2
+a2            data2       kartik         rd1234      sim1.txt       text
+
+
+-rw-r--r--  1 TR9_Unix practice    51 Feb 22 09:37 test2.doc
+----------  1 TR9_Unix practice    51 Feb 21 11:07 testmask
+-----w--w-  1 TR9_Unix practice    12 Feb 21 11:00 testumask
+-----w--w-  1 TR9_Unix practice    13 Feb 21 11:02 testumask2
+-rw-r--r--  1 TR9_Unix practice    36 Feb 22 11:07 text
+-r--r---w-  1 TR9_Unix practice    14 Feb 20 17:14 text1
+-rw-r--r--  1 TR9_Unix practice    28 Feb 21 10:31 text2
+-rw-r--r--  1 TR9_Unix practice     0 Feb 20 14:43 tmp
+-rw-r--r--  1 TR9_Unix practice     0 Feb 23 16:45 ttt.doc
+drwxr-xr-x  3 TR9_Unix practice  4096 Feb 24 17:49 vishp
+-rw-r--r--  1 TR9_Unix practice    30 Feb 22 11:03 vitest
+-rw-r--r--  1 TR9_Unix practice    62 Feb 22 10:30 vitest1.c
+-rw-r--r--  1 TR9_Unix practice     0 Feb 22 10:41 vitest2.c
+-rw-r--r--  1 TR9_Unix practice    37 Feb 22 10:45 vitest3
+-rw-r--r--  1 TR9_Unix practice     4 Feb 22 12:33 vitest3.c
+-rw-r--r--  1 TR9_Unix practice    57 Feb 22 12:35 vitest5.c
+-rw-r--r--  1 TR9_Unix practice    28 Feb 22 10:40 vitest.c
+-rw-r--r--  1 TR9_Unix practice    14 Feb 21 11:24 wow
+-rw-r--r--  1 TR9_Unix practice     7 Feb 20 14:10 wwf
+-rw-r--r--  1 TR9_Unix practice     0 Feb 22 16:38 x
+-rw-r--r--  1 TR9_Unix practice    13 Feb 22 11:43 xaa
+-rw-r--r--  1 TR9_Unix practice    10 Feb 22 11:43 xab
+-rw-r--r--  1 TR9_Unix practice    10 Feb 22 11:43 xac
+-rwxrwxrwx  1 TR9_Unix practice    11 Feb 20 17:34 xyz
+-rw-rw-rw-  1 TR9_Unix practice    11 Feb 20 17:36 xyz1
+-rw-r--r--  1 TR9_Unix practice     8 Feb 21 17:22 xyz.doc
+[TR9_Unix@unix ~]$ chmod 777 karan501632
+[TR9_Unix@unix ~]$ cp kar.tar KS501632/
+cp: cannot stat `kar.tar': No such file or directory
+[TR9_Unix@unix ~]$ cd
+[TR9_Unix@unix ~]$ cd karan501632
+[TR9_Unix@unix karan501632]$ cp kar.tar KS501632/
+cp: cannot stat `kar.tar': No such file or directory
+[TR9_Unix@unix karan501632]$ where kar.tar
+-bash: where: command not found
+[TR9_Unix@unix karan501632]$ ls kar.tar
+ls: kar.tar: No such file or directory
+[TR9_Unix@unix karan501632]$ ls -l| wc
+     30     263    1621
+[TR9_Unix@unix karan501632]$ ls
+example  Grapes  kara         karar    techm     text1  xaa  xad  xag  xaj
+file1    jakshu  karan        kat.tar  temp      text2  xab  xae  xah  xak
+file2    k5      karan501632  sub_k    tempuser  Unix   xac  xaf  xai
+[TR9_Unix@unix karan501632]$ ls | wc
+     29      29     161
+[TR9_Unix@unix karan501632]$ ls -l |tee tempo
+total 108
+-rw-r--r-- 1 TR9_Unix practice    73 Feb 21 17:30 example
+-rw-r--r-- 1 TR9_Unix practice    26 Feb 21 12:16 file1
+-rw-r--r-- 1 TR9_Unix practice    14 Feb 21 12:16 file2
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 18:09 Grapes
+-rw-r--r-- 1 TR9_Unix practice    20 Feb 21 17:20 jakshu
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 10:01 k5
+-rw-r--r-- 1 TR9_Unix practice    99 Feb 21 16:58 kara
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 09:48 karan
+-rw-r--r-- 1 TR9_Unix practice    38 Feb 21 10:01 karan501632
+-rw-r--r-- 1 TR9_Unix practice   159 Feb 21 16:57 karar
+-rwxrwxrwx 1 TR9_Unix practice 10240 Feb 25 09:41 kat.tar
+drwxr-xr-x 2 TR9_Unix practice  4096 Feb 21 10:42 sub_k
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 09:48 techm
+-rw-r--r-- 1 TR9_Unix practice    17 Feb 21 17:19 temp
+-rw-r--r-- 1 TR9_Unix practice  6186 Feb 21 17:12 tempuser
+-rw-r--r-- 1 TR9_Unix practice    31 Feb 21 17:21 text1
+-rw-r--r-- 1 TR9_Unix practice    31 Feb 21 17:21 text2
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 09:48 Unix
+-rw-r--r-- 1 TR9_Unix practice     7 Feb 21 16:58 xaa
+-rw-r--r-- 1 TR9_Unix practice     9 Feb 21 16:58 xab
+-rw-r--r-- 1 TR9_Unix practice    14 Feb 21 16:58 xac
+-rw-r--r-- 1 TR9_Unix practice    11 Feb 21 16:58 xad
+-rw-r--r-- 1 TR9_Unix practice    10 Feb 21 16:58 xae
+-rw-r--r-- 1 TR9_Unix practice    12 Feb 21 16:58 xaf
+-rw-r--r-- 1 TR9_Unix practice     4 Feb 21 16:58 xag
+-rw-r--r-- 1 TR9_Unix practice    10 Feb 21 16:58 xah
+-rw-r--r-- 1 TR9_Unix practice    13 Feb 21 16:58 xai
+-rw-r--r-- 1 TR9_Unix practice     8 Feb 21 16:58 xaj
+-rw-r--r-- 1 TR9_Unix practice     1 Feb 21 16:58 xak
+[TR9_Unix@unix karan501632]$ cat tempo
+total 108
+-rw-r--r-- 1 TR9_Unix practice    73 Feb 21 17:30 example
+-rw-r--r-- 1 TR9_Unix practice    26 Feb 21 12:16 file1
+-rw-r--r-- 1 TR9_Unix practice    14 Feb 21 12:16 file2
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 18:09 Grapes
+-rw-r--r-- 1 TR9_Unix practice    20 Feb 21 17:20 jakshu
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 10:01 k5
+-rw-r--r-- 1 TR9_Unix practice    99 Feb 21 16:58 kara
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 09:48 karan
+-rw-r--r-- 1 TR9_Unix practice    38 Feb 21 10:01 karan501632
+-rw-r--r-- 1 TR9_Unix practice   159 Feb 21 16:57 karar
+-rwxrwxrwx 1 TR9_Unix practice 10240 Feb 25 09:41 kat.tar
+drwxr-xr-x 2 TR9_Unix practice  4096 Feb 21 10:42 sub_k
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 09:48 techm
+-rw-r--r-- 1 TR9_Unix practice    17 Feb 21 17:19 temp
+-rw-r--r-- 1 TR9_Unix practice  6186 Feb 21 17:12 tempuser
+-rw-r--r-- 1 TR9_Unix practice    31 Feb 21 17:21 text1
+-rw-r--r-- 1 TR9_Unix practice    31 Feb 21 17:21 text2
+-rw-r--r-- 1 TR9_Unix practice     0 Feb 21 09:48 Unix
+-rw-r--r-- 1 TR9_Unix practice     7 Feb 21 16:58 xaa
+-rw-r--r-- 1 TR9_Unix practice     9 Feb 21 16:58 xab
+-rw-r--r-- 1 TR9_Unix practice    14 Feb 21 16:58 xac
+-rw-r--r-- 1 TR9_Unix practice    11 Feb 21 16:58 xad
+-rw-r--r-- 1 TR9_Unix practice    10 Feb 21 16:58 xae
+-rw-r--r-- 1 TR9_Unix practice    12 Feb 21 16:58 xaf
+-rw-r--r-- 1 TR9_Unix practice     4 Feb 21 16:58 xag
+-rw-r--r-- 1 TR9_Unix practice    10 Feb 21 16:58 xah
+-rw-r--r-- 1 TR9_Unix practice    13 Feb 21 16:58 xai
+-rw-r--r-- 1 TR9_Unix practice     8 Feb 21 16:58 xaj
+-rw-r--r-- 1 TR9_Unix practice     1 Feb 21 16:58 xak
+[TR9_Unix@unix karan501632]$
+[TR9_Unix@unix karan501632]$
+[TR9_Unix@unix karan501632]$
+[TR9_Unix@unix karan501632]$ ls
+example  Grapes  kara         karar    techm  tempuser  Unix  xac  xaf  xai
+file1    jakshu  karan        kat.tar  temp   text1     xaa   xad  xag  xaj
+file2    k5      karan501632  sub_k    tempo  text2     xab   xae  xah  xak
+[TR9_Unix@unix karan501632]$ touch tmporary tmp1 tmp22 tmp99 tmpdfujkdf
+[TR9_Unix@unix karan501632]$ ls
+example  jakshu  karan501632  techm     text1  tmp99       xaa  xae  xai
+file1    k5      karar        temp      text2  tmpdfujkdf  xab  xaf  xaj
+file2    kara    kat.tar      tempo     tmp1   tmporary    xac  xag  xak
+Grapes   karan   sub_k        tempuser  tmp22  Unix        xad  xah
+[TR9_Unix@unix karan501632]$ rm tmp*
+[TR9_Unix@unix karan501632]$ ls
+example  Grapes  kara         karar    techm  tempuser  Unix  xac  xaf  xai
+file1    jakshu  karan        kat.tar  temp   text1     xaa   xad  xag  xaj
+file2    k5      karan501632  sub_k    tempo  text2     xab   xae  xah  xak
+[TR9_Unix@unix karan501632]$
+[TR9_Unix@unix karan501632]$
+[TR9_Unix@unix karan501632]$
+[TR9_Unix@unix karan501632]$
+[TR9_Unix@unix karan501632]$ cd
+[TR9_Unix@unix ~]$ cd /etc
+[TR9_Unix@unix etc]$ ls w*
+warnquota.conf  webalizer.conf  wgetrc  wvdial.conf
+
+wpa_supplicant:
+wpa_supplicant.conf
+[TR9_Unix@unix etc]$
+[TR9_Unix@unix etc]$ cd
+[TR9_Unix@unix ~]$ cd KS501632
+[TR9_Unix@unix KS501632]$ touch tempjhuyg12 tempuhygyu3 temphu8
+[TR9_Unix@unix KS501632]$ ls temp*[0-9]
+temphu8  tempjhuyg12  tempuhygyu3
+[TR9_Unix@unix KS501632]$ ls [a|A]*
+-bash: A]*: command not found
+ls: [a: No such file or directory
+[TR9_Unix@unix KS501632]$ ls (a|A)*
+-bash: syntax error near unexpected token `('
+[TR9_Unix@unix KS501632]$ ls a*|A*
+-bash: A*: command not found
+[TR9_Unix@unix KS501632]$ ls a*
+a1  a11  a90  a.out  arb.doc
+[TR9_Unix@unix KS501632]$ who|pwd
+/home1/TR9_Unix/KS501632
+[TR9_Unix@unix KS501632]$ cd
+[TR9_Unix@unix ~]$ cd ?etc
+-bash: cd: ?etc: No such file or directory
+[TR9_Unix@unix ~]$ cd /etc
+[TR9_Unix@unix etc]$ ls *.config
+man.config  scsi_id.config
+[TR9_Unix@unix etc]$ who i am
+TR9_Unix pts/3        2017-02-25 09:39 (10.10.86.4)
+[TR9_Unix@unix etc]$ user
+-bash: user: command not found
+[TR9_Unix@unix etc]$ x=hi, User! Welcome to Techmahindra Learning World!        -bash: User!: command not found
+[TR9_Unix@unix etc]$ echo x=hi, User! Welcome to Techmahindra Learning World!
+x=hi, User! Welcome to Techmahindra Learning World!
+[TR9_Unix@unix etc]$ user1=$x
+[TR9_Unix@unix etc]$ user1
+-bash: user1: command not found
+[TR9_Unix@unix etc]$ Echo user1
+-bash: Echo: command not found
+[TR9_Unix@unix etc]$ echo user1
+user1
+[TR9_Unix@unix etc]$ echo $user1
+
+[TR9_Unix@unix etc]$ path pwd
+-bash: path: command not found
+[TR9_Unix@unix etc]$ which pwd
+/bin/pwd
+[TR9_Unix@unix etc]$ which mkdir
+/bin/mkdir
+[TR9_Unix@unix etc]$ which find
+/usr/bin/find
+[TR9_Unix@unix etc]$ which fsck
+/usr/bin/which: no fsck in (/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home1/TR9_Unix/bin)
+[TR9_Unix@unix etc]$ cal 2022
+                               2022
+
+       January               February                 March
+Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+                   1          1  2  3  4  5          1  2  3  4  5
+ 2  3  4  5  6  7  8    6  7  8  9 10 11 12    6  7  8  9 10 11 12
+ 9 10 11 12 13 14 15   13 14 15 16 17 18 19   13 14 15 16 17 18 19
+16 17 18 19 20 21 22   20 21 22 23 24 25 26   20 21 22 23 24 25 26
+23 24 25 26 27 28 29   27 28                  27 28 29 30 31
+30 31
+        April                   May                   June
+Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+                1  2    1  2  3  4  5  6  7             1  2  3  4
+ 3  4  5  6  7  8  9    8  9 10 11 12 13 14    5  6  7  8  9 10 11
+10 11 12 13 14 15 16   15 16 17 18 19 20 21   12 13 14 15 16 17 18
+17 18 19 20 21 22 23   22 23 24 25 26 27 28   19 20 21 22 23 24 25
+24 25 26 27 28 29 30   29 30 31               26 27 28 29 30
+
+        July                  August                September
+Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+                1  2       1  2  3  4  5  6                1  2  3
+ 3  4  5  6  7  8  9    7  8  9 10 11 12 13    4  5  6  7  8  9 10
+10 11 12 13 14 15 16   14 15 16 17 18 19 20   11 12 13 14 15 16 17
+17 18 19 20 21 22 23   21 22 23 24 25 26 27   18 19 20 21 22 23 24
+24 25 26 27 28 29 30   28 29 30 31            25 26 27 28 29 30
+31
+       October               November               December
+Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+                   1          1  2  3  4  5                1  2  3
+ 2  3  4  5  6  7  8    6  7  8  9 10 11 12    4  5  6  7  8  9 10
+ 9 10 11 12 13 14 15   13 14 15 16 17 18 19   11 12 13 14 15 16 17
+16 17 18 19 20 21 22   20 21 22 23 24 25 26   18 19 20 21 22 23 24
+23 24 25 26 27 28 29   27 28 29 30            25 26 27 28 29 30 31
+30 31
+
+[TR9_Unix@unix etc]$
+
+
+
+
+
+[TR9_Unix@unix etc]$ clear
+[TR9_Unix@unix etc]$ pwd
+/etc
+[TR9_Unix@unix etc]$ cd
+[TR9_Unix@unix ~]$ cd KS501632
+[TR9_Unix@unix KS501632]$ mkdir system
+[TR9_Unix@unix KS501632]$ cd system
+[TR9_Unix@unix system]$ pwd
+/home1/TR9_Unix/KS501632/system
+[TR9_Unix@unix system]$ mkdir software
+[TR9_Unix@unix system]$ mkdir hardware
+[TR9_Unix@unix system]$ cd hardware
+[TR9_Unix@unix hardware]$ mkdir input output
+[TR9_Unix@unix hardware]$ ls
+input  output
+[TR9_Unix@unix hardware]$ cd /home1/TR9_Unix/KS501632
+[TR9_Unix@unix KS501632]$ pwd
+/home1/TR9_Unix/KS501632
+[TR9_Unix@unix KS501632]$ cd software
+-bash: cd: software: No such file or directory
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$ ls
+a1   a.out    K1   kar.doc  prog.c  system  temphu8      test4     text1  xyz2
+a11  arb.doc  k3   lan.doc  raj11   tem1    tempjhuyg12  testuniq  xyz
+a90  f1.dat   kar  prog     so1     temp    tempuhygyu3  text      xyz1
+[TR9_Unix@unix KS501632]$ cd system
+[TR9_Unix@unix system]$ cd software
+[TR9_Unix@unix software]$ mkdir appl sys
+[TR9_Unix@unix software]$ touch java dotnet
+[TR9_Unix@unix software]$ cd /home1/TR9_Unix/KS501632/system/software/sys
+[TR9_Unix@unix sys]$ touch os linker
+[TR9_Unix@unix sys]$ cd /home1/TR9_Unix/KS501632/system/hardware/sys
+-bash: cd: /home1/TR9_Unix/KS501632/system/hardware/sys: No such file or directory
+[TR9_Unix@unix sys]$ cd /home1/TR9_Unix/KS501632/system/hardware
+[TR9_Unix@unix hardware]$ cd /home1/TR9_Unix/KS501632/system/hardware/input
+[TR9_Unix@unix input]$ touch mouse scanner
+[TR9_Unix@unix input]$ cd /home1/TR9_Unix/KS501632/system/hardware/output
+[TR9_Unix@unix output]$ touch printer vdu
+[TR9_Unix@unix output]$ cd /home1/TR9_Unix/KS501632
+[TR9_Unix@unix KS501632]$ ls -R
+.:
+a1   a.out    K1   kar.doc  prog.c  system  temphu8      test4     text1  xyz2
+a11  arb.doc  k3   lan.doc  raj11   tem1    tempjhuyg12  testuniq  xyz
+a90  f1.dat   kar  prog     so1     temp    tempuhygyu3  text      xyz1
+
+./system:
+hardware  software
+
+./system/hardware:
+input  output
+
+./system/hardware/input:
+mouse  scanner
+
+./system/hardware/output:
+printer  vdu
+
+./system/software:
+appl  dotnet  java  sys
+
+./system/software/appl:
+
+./system/software/sys:
+linker  os
+[TR9_Unix@unix KS501632]$ cd software
+
+a3            data3       KS501632       rdssb       sim2           text1
+a6            data.gz     l              s           sim3.c         text2
+A7            day2        lema           s1          sim4.gz        tmp
+abc           deepti      mkdir          s1.         simran         vishalpatil
+ABC           dev.doc     mouse_scanner  s1.sh       simran1        vishp
+abc.doc       dox1        mru            s2          sim.txt        vitest
+ahjh          errorfile1  nandu          s2aa        sk             vitest1.c
+aish          f1          new            s2ab        skc            vitest2.c
+akc           f1.dat      new1           saa         sn             vitest3
+allfiles      f2          newfile        sample      sn501846       vitest3.c
+alok          f3          nile           sample.txt  software       vitest5.c
+Aloka         f6          Nilesh         sangram     SRT            vitest.c
+alok.c        f7          nileshjha      sanu        s.sh           wow
+ank1          fil3        nj             sarvesh     sys            wwf
+ank2          file1       num            sayali      syss           x
+ank3          file2       old            sayali2     system         xaa
+ank4          file3       old1           search      system2        xab
+ankush        fruit1      pd             shefali     t              xac
+ankushchitte  fruit22     poja777        shefalinew  t1             xyz
+Apache        furits      poo            shefaliold  temp           xyz1
+aps           h           pooja          shivi       temp3          xyz.doc
+[TR9_Unix@unix ~]$ clear
+[TR9_Unix@unix ~]$ ~ hostname
+-bash: /home1/TR9_Unix: is a directory
+[TR9_Unix@unix ~]$ hostname
+unix.esg.techmahindra.com
+[TR9_Unix@unix ~]$
+[TR9_Unix@unix ~]$
+[TR9_Unix@unix ~]$
+[TR9_Unix@unix ~]$
+[TR9_Unix@unix ~]$ uname
+Linux
+[TR9_Unix@unix ~]$
+[TR9_Unix@unix ~]$
+[TR9_Unix@unix ~]$ cd /bin
+[TR9_Unix@unix bin]$ pwd
+/bin
+[TR9_Unix@unix bin]$ ls -R
+.:
+alsacard              ed               mailx            sleep
+alsaunmute            egrep            mkdir            sort
+arch                  env              mknod            stty
+awk                   ex               mktemp           su
+basename              false            more             sync
+bash                  fgrep            mount            tar
+cat                   gawk             mountpoint       taskset
+chgrp                 gettext          mv               tcptraceroute
+chmod                 grep             netstat          tcsh
+chown                 gtar             nice             touch
+cp                    gunzip           nisdomainname    tracepath
+cpio                  gzip             pgawk            tracepath6
+csh                   hostname         ping             traceroute
+cut                   igawk            ping6            traceroute6
+date                  ipcalc           ps               tracert
+dbus-cleanup-sockets  kbd_mode         pwd              true
+dbus-daemon           keyctl           raw              umount
+dbus-monitor          kill             red              uname
+dbus-send             ksh              redhat_lsb_init  unicode_start
+dbus-uuidgen          ksh93            rm               unicode_stop
+dd                    link             rmdir            unlink
+df                    ln               rpm              usleep
+dmesg                 loadkeys         rvi              vi
+dnsdomainname         loadkeys.static  rview            view
+doexec                logger           sed              ypdomainname
+domainname            login            setfont          zcat
+dumpkeys              ls               setserial
+echo                  mail             sh
+[TR9_Unix@unix bin]$
+[TR9_Unix@unix bin]$
+[TR9_Unix@unix bin]$ cd
+[TR9_Unix@unix ~]$ cd /boot
+[TR9_Unix@unix boot]$ ls -R
+.:
+ashwini                       symvers-2.6.18-164.el5.gz
+config-2.6.18-164.el5         symvers-2.6.18-164.el5xen.gz
+config-2.6.18-164.el5xen      System.map-2.6.18-164.el5
+grub                          System.map-2.6.18-164.el5xen
+initrd-2.6.18-164.el5.img     vmlinuz-2.6.18-164.el5
+initrd-2.6.18-164.el5xen.img  vmlinuz-2.6.18-164.el5xen
+lost+found                    xen.gz-2.6.18-164.el5
+message                       xen-syms-2.6.18-164.el5
+
+./grub:
+device.map     grub.conf         minix_stage1_5     stage2
+e2fs_stage1_5  iso9660_stage1_5  reiserfs_stage1_5  ufs2_stage1_5
+fat_stage1_5   jfs_stage1_5      splash.xpm.gz      vstafs_stage1_5
+ffs_stage1_5   menu.lst          stage1             xfs_stage1_5
+ls: ./lost+found: Permission denied
+[TR9_Unix@unix boot]$
+[TR9_Unix@unix boot]$
+[TR9_Unix@unix boot]$ cd
+[TR9_Unix@unix ~]$ cd KS501632
+[TR9_Unix@unix KS501632]$ pwd
+/home1/TR9_Unix/KS501632
+[TR9_Unix@unix KS501632]$ ls -la
+total 72
+drwxr-xr-x  2 TR9_Unix practice 4096 Feb 22 17:22 .
+drwx------ 70 TR9_Unix practice 4096 Feb 23 13:19 ..
+-rw-r--r--  1 TR9_Unix practice  325 Feb 20 15:27 a1
+-rw-r--r--  2 TR9_Unix practice    0 Feb 20 17:03 a11
+lrwxrwxrwx  1 TR9_Unix practice    3 Feb 20 12:46 a90 -> kar
+-rwxr-xr-x  1 TR9_Unix practice 6883 Feb 22 12:46 a.out
+-rw-r--r--  1 TR9_Unix practice   45 Feb 20 15:20 f1.dat
+-rw-r--r--  1 TR9_Unix practice   22 Feb 22 10:56 K1
+-rw-r--r--  1 TR9_Unix practice   28 Feb 22 10:17 k3
+-rw-r--r--  1 TR9_Unix practice   45 Feb 20 17:06 kar
+-rw-r--r--  1 TR9_Unix practice   98 Feb 22 10:27 prog
+-rw-r--r--  1 TR9_Unix practice  154 Feb 22 14:18 prog.c
+-rw-r--r--  2 TR9_Unix practice    0 Feb 20 17:03 raj11
+-rw-r--r--  1 TR9_Unix practice   49 Feb 22 13:55 so1
+-rw-r--r--  1 TR9_Unix practice    0 Feb 22 17:22 tem1
+-rw-r--r--  1 TR9_Unix practice   30 Feb 20 17:38 temp
+-rw-r--r--  1 TR9_Unix practice   71 Feb 22 11:00 test4
+-rw-r--r--  1 TR9_Unix practice   91 Feb 22 13:50 testuniq
+-rw-r--r--  1 TR9_Unix practice   16 Feb 20 17:33 xyz
+-rw-r--r--  1 TR9_Unix practice   16 Feb 20 17:35 xyz1
+-rw-r--r--  1 TR9_Unix practice   32 Feb 20 17:36 xyz2
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$ ls r*
+raj11
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$ ls ???
+a11  a90  kar  so1  xyz
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$ touch kar.doc arb.doc lan.doc
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$ ls
+a1   a90    arb.doc  K1  kar      la[TR9_Unix@unix n.doc  prog.c  so1   temp   testuniq  xyz1
+a11  a.out  f1.dat   k3  kar.doc  prog     raj11   tem1  test4  xyz       xyz2
+[TR9_Unix@unix KS501632]$   ls *.doc
+arb.doc  kar.doc  lan.doc
+
+
+
+KS501632]$ cat>text1
+Hi this is Karan Sharma
+This Is Day1 Assignment
+[TR9_Unix@unix KS501632]$ cat text1
+Hi this is Karan Sharma
+This Is Day1 Assignment
+
+
+[TR9_Unix@unix KS501632]$ ls /home1/TR9_Unix/KS501632/system/hardware
+input  output
+[TR9_Unix@unix KS501632]$ cd
+[TR9_Unix@unix ~]$ cd sys
+[TR9_Unix@unix sys]$ pwd
+/home1/TR9_Unix/sys
+[TR9_Unix@unix sys]$ ls -R /home1/TR9_Unix/KS501632/
+/home1/TR9_Unix/KS501632/:
+a1   a.out    K1   kar.doc  prog.c  system  temphu8      test4     text1  xyz2
+a11  arb.doc  k3   lan.doc  raj11   tem1    tempjhuyg12  testuniq  xyz
+a90  f1.dat   kar  prog     so1     temp    tempuhygyu3  text      xyz1
+
+/home1/TR9_Unix/KS501632/system:
+hardware  software
+
+/home1/TR9_Unix/KS501632/system/hardware:
+input  output
+
+/home1/TR9_Unix/KS501632/system/hardware/input:
+mouse  scanner
+
+/home1/TR9_Unix/KS501632/system/hardware/output:
+printer  vdu
+
+/home1/TR9_Unix/KS501632/system/software:
+appl  dotnet  java  sys
+
+/home1/TR9_Unix/KS501632/system/software/appl:
+
+/home1/TR9_Unix/KS501632/system/software/sys:
+linker  os
+[TR9_Unix@unix sys]$ cd
+[TR9_Unix@unix ~]$ ls /home1/TR9_Unix/KS501632/system/hardware
+input  output
+[TR9_Unix@unix ~]$ cd input
+[TR9_Unix@unix input]$ ls
+[TR9_Unix@unix input]$ ls
+[TR9_Unix@unix input]$ pwd
+/home1/TR9_Unix/input
+[TR9_Unix@unix input]$ touch scanner monitor
+[TR9_Unix@unix input]$ ls
+monitor  scanner
+[TR9_Unix@unix input]$ rn scanner
+-bash: rn: command not found
+[TR9_Unix@unix input]$ mv scanner scan
+[TR9_Unix@unix input]$ ls
+monitor  scan
+
+
+
+
+
+
+
+
+
+
+
+
+
+[TR9_Unix@unix input]$ mv scanner scan
+[TR9_Unix@unix input]$ ls
+monitor  scan
+[TR9_Unix@unix input]$ clear
+[TR9_Unix@unix input]$ cat>>scan
+hi there this is assignment day 2
+thats all
+cerits:- Karan Sharma
+[TR9_Unix@unix input]$ cat scan
+hi there this is assignment day 2
+thats all
+cerits:- Karan Sharma
+[TR9_Unix@unix input]$ ls /home1/TR9_Unix/KS501632
+a1   a.out    K1   kar.doc  prog.c  system  temphu8      test4     text1  xyz2
+a11  arb.doc  k3   lan.doc  raj11   tem1    tempjhuyg12  testuniq  xyz
+a90  f1.dat   kar  prog     so1     temp    tempuhygyu3  text      xyz1
+[TR9_Unix@unix input]$ cd /home1/TR9_Unix/KS501632
+[TR9_Unix@unix KS501632]$ rmdir system
+rmdir: system: Directory not empty
+[TR9_Unix@unix KS501632]$ ls -l
+total 76
+-rw-r--r-- 1 TR9_Unix practice  325 Feb 20 15:27 a1
+-rw-r--r-- 2 TR9_Unix practice    0 Feb 20 17:03 a11
+lrwxrwxrwx 1 TR9_Unix practice    3 Feb 20 12:46 a90 -> kar
+-rwxr-xr-x 1 TR9_Unix practice 6883 Feb 22 12:46 a.out
+-rw-r--r-- 1 TR9_Unix practice    0 Feb 23 13:34 arb.doc
+-rw-r--r-- 1 TR9_Unix practice   45 Feb 20 15:20 f1.dat
+-rw-r--r-- 1 TR9_Unix practice   22 Feb 22 10:56 K1
+-rw-r--r-- 1 TR9_Unix practice   28 Feb 22 10:17 k3
+-rw-r--r-- 1 TR9_Unix practice   45 Feb 20 17:06 kar
+-rw-r--r-- 1 TR9_Unix practice    0 Feb 23 13:34 kar.doc
+-rw-r--r-- 1 TR9_Unix practice    0 Feb 23 13:34 lan.doc
+-rw-r--r-- 1 TR9_Unix practice   98 Feb 22 10:27 prog
+-rw-r--r-- 1 TR9_Unix practice  154 Feb 22 14:18 prog.c
+-rw-r--r-- 2 TR9_Unix practice    0 Feb 20 17:03 raj11
+-rw-r--r-- 1 TR9_Unix practice   49 Feb 22 13:55 so1
+drwxr-xr-x 4 TR9_Unix practice 4096 Feb 25 10:21 system
+-rw-r--r-- 1 TR9_Unix practice    0 Feb 22 17:22 tem1
+-rw-r--r-- 1 TR9_Unix practice   30 Feb 20 17:38 temp
+-rw-r--r-- 1 TR9_Unix practice    0 Feb 25 10:10 temphu8
+-rw-r--r-- 1 TR9_Unix practice    0 Feb 25 10:10 tempjhuyg12
+-rw-r--r-- 1 TR9_Unix practice    0 Feb 25 10:10 tempuhygyu3
+-rw-r--r-- 1 TR9_Unix practice   71 Feb 22 11:00 test4
+-rw-r--r-- 1 TR9_Unix practice   91 Feb 22 13:50 testuniq
+-rw-r--r-- 1 TR9_Unix practice   14 Feb 23 15:25 text
+-rw-r--r-- 1 TR9_Unix practice   48 Feb 23 13:40 text1
+-rw-r--r-- 1 TR9_Unix practice   16 Feb 20 17:33 xyz
+-rw-r--r-- 1 TR9_Unix practice   16 Feb 20 17:35 xyz1
+-rw-r--r-- 1 TR9_Unix practice   32 Feb 20 17:36 xyz2
+[TR9_Unix@unix KS501632]$ chmod u+x g-r o-r
+chmod: cannot access `g-r': No such file or directory
+chmod: cannot access `o-r': No such file or directory
+[TR9_Unix@unix KS501632]$ chmod u+x g-r o-r xyz1
+chmod: cannot access `g-r': No such file or directory
+chmod: cannot access `o-r': No such file or directory
+[TR9_Unix@unix KS501632]$ chmod 777 xyz1
+[TR9_Unix@unix KS501632]$ ls -l xyq1
+ls: xyq1: No such file or directory
+[TR9_Unix@unix KS501632]$ ls -l xyz1
+-rwxrwxrwx 1 TR9_Unix practice 16 Feb 20 17:35 xyz1
+[TR9_Unix@unix KS501632]$ chmod u+xg-ro-r xyz1
+chmod: invalid mode: `u+xg-ro-r'
+Try `chmod --help' for more information.
+[TR9_Unix@unix KS501632]$ chmod u+x g-r o-r xyz1
+chmod: cannot access `g-r': No such file or directory
+chmod: cannot access `o-r': No such file or directory
+[TR9_Unix@unix KS501632]$ chmod u+x,g-r,o-r xyz1
+[TR9_Unix@unix KS501632]$ ls -l xyz1
+-rwx-wx-wx 1 TR9_Unix practice 16 Feb 20 17:35 xyz1
+[TR9_Unix@unix KS501632]$ rm -r system
+[TR9_Unix@unix KS501632]$ ls
+a1   a.out    K1   kar.doc  prog.c  tem1     tempjhuyg12  testuniq  xyz
+a11  arb.doc  k3   lan.doc  raj11   temp     tempuhygyu3  text      xyz1
+a90  f1.dat   kar  prog     so1     temphu8  test4        text1     xyz2
+
+
+
+
+
+[TR9_Unix@unix shivi]$ vi grepp
+[TR9_Unix@unix shivi]$ sort -k +2 -3 grepp
+sort: invalid option -- 3
+Try `sort --help' for more information.
+[TR9_Unix@unix shivi]$ sort -d "," +2 -3 grepp
+sort: open failed: ,: No such file or directory
+[TR9_Unix@unix shivi]$ cat grepp
+sad,afad,dfver,abc,cdx,loc
+kar,naam,kaam,doc,kal
+nal,code,unix,ofc:wq
+
+[TR9_Unix@unix shivi]$ sort -d "," +2 -3 grepp
+sort: open failed: ,: No such file or directory
+[TR9_Unix@unix shivi]$ sort -t "," +2 -3 grepp
+
+sad,afad,dfver,abc,cdx,loc
+kar,naam,kaam,doc,kal
+nal,code,unix,ofc:wq
+[TR9_Unix@unix shivi]$ sort -t "," +5 -6 grepp
+
+kar,naam,kaam,doc,kal
+nal,code,unix,ofc:wq
+sad,afad,dfver,abc,cdx,loc
+[TR9_Unix@unix shivi]$ sort -t "," +5 -2 grepp
+
+kar,naam,kaam,doc,kal
+nal,code,unix,ofc:wq
+sad,afad,dfver,abc,cdx,loc
+[TR9_Unix@unix shivi]$ vi example
+[TR9_Unix@unix shivi]$ head -12 example
+dgvasdf
+dfadsgva
+dgvgturg
+hjdfghb
+cxvtyd
+ttghs
+tscxvvxc
+ghtst
+utoiotr
+bnvmxcvter
+teycg
+hcybvc
+[TR9_Unix@unix shivi]$ cat example
+dgvasdf
+dfadsgva
+dgvgturg
+hjdfghb
+cxvtyd
+ttghs
+tscxvvxc
+ghtst
+utoiotr
+bnvmxcvter
+teycg
+hcybvc
+xcgseth
+bvhjmtfuifgd
+vbndfg
+vbngfhk
+vbncsgd
+vbngfhj
+vnbhgfj
+vbcxcg
+vbngfh
+nvbcgdh
+bcxdsf
+[TR9_Unix@unix shivi]$ tail -5 example
+vnbhgfj
+vbcxcg
+vbngfh
+nvbcgdh
+bcxdsf
+[TR9_Unix@unix shivi]$ tail -R5 example
+tail: invalid option -- R
+Try `tail --help' for more information.
+[TR9_Unix@unix shivi]$ tail -5r example
+tail: invalid option -- 5
+Try `tail --help' for more information.
+[TR9_Unix@unix shivi]$ tail -nr 5 example
+tail: r: invalid number of lines
+[TR9_Unix@unix shivi]$ tail -5 nr example
+tail: invalid option -- 5
+Try `tail --help' for more information.
+[TR9_Unix@unix shivi]$ tail -r5 example
+tail: invalid option -- r
+Try `tail --help' for more information.
+[TR9_Unix@unix shivi]$ tail -R5 example
+tail: invalid option -- R
+Try `tail --help' for more information.
+[TR9_Unix@unix shivi]$ tail -5R example
+tail: invalid option -- 5
+Try `tail --help' for more information.
+[TR9_Unix@unix shivi]$ ls
+1          DIR1.doc   grepp      q1         snehal      text1  xah
+a1         error1     h1         rat        sonu        text2  xai
+aa1        example    jeet       rose       sweety      xaa    x.tar
+abc        f1         jeetendra  s1         temp        xab    y.tar
+abc.tar    f1.dat     karan      s1.sh      temp1       xabaa
+as11       file       m1         sakshi     temp5       xac
+data       file1      m2         sg1        testdir     xad
+data1.doc  fileumask  monu       shenal     testmask2   xae
+data.doc   fruit      names.csv  shivi.doc  testmask3   xaf
+def        ghi        newdir     sneha      testumask2  xag
+[TR9_Unix@unix shivi]$ gzip -c newdir
+gzip: newdir is a directory -- ignored
+[TR9_Unix@unix shivi]$ gzip -c xac                                            ù+­Xxac3ç²à²ä+¿T4[TR9_Unix@unix shivi]$ cd
+[TR9_Unix@unix ~]$ cd KS501632
+[TR9_Unix@unix KS501632]$ vi example
+[TR9_Unix@unix KS501632]$ cat example
+
+1000 Rajesh Mumbai Rajesh111@gmail.com
+1056 Irfan Delhi Ifr2134@rediffmail.com
+1780 Chritina Chennai Chritina709@gmail.com
+[TR9_Unix@unix KS501632]$ cut -f2,3 example
+
+1000 Rajesh Mumbai Rajesh111@gmail.com
+1056 Irfan Delhi Ifr2134@rediffmail.com
+1780 Chritina Chennai Chritina709@gmail.com
+[TR9_Unix@unix KS501632]$ cut -c2,3 example
+
+00
+05
+78
+[TR9_Unix@unix KS501632]$ cut -d" " -f2-3 example
+
+Rajesh Mumbai
+Irfan Delhi
+Chritina Chennai
+[TR9_Unix@unix KS501632]$ sort -n example
+
+1000 Rajesh Mumbai Rajesh111@gmail.com
+1056 Irfan Delhi Ifr2134@rediffmail.com
+1780 Chritina Chennai Chritina709@gmail.com
+[TR9_Unix@unix KS501632]$ sort +2 example
+
+1780 Chritina Chennai Chritina709@gmail.com
+1056 Irfan Delhi Ifr2134@rediffmail.com
+1000 Rajesh Mumbai Rajesh111@gmail.com
+[TR9_Unix@unix KS501632]$ vi exp
+[TR9_Unix@unix KS501632]$
+[TR9_Unix@unix KS501632]$ tr " " ~ exp
+tr: extra operand `exp'
+Try `tr --help' for more information.
+[TR9_Unix@unix KS501632]$ tr " " "~"< exp
+heque~Amount~is~34890~INR
+[TR9_Unix@unix KS501632]$ set
+BASH=/bin/bash
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]="3" [1]="2" [2]="25" [3]="1" [4]="release" [5]="x86_64-redhat-linux-gnu")
+BASH_VERSION='3.2.25(1)-release'
+COLORS=/etc/DIR_COLORS.xterm
+COLUMNS=80
+CVS_RSH=ssh
+DIRSTACK=()
+EUID=6827
+GROUPS=()
+G_BROKEN_FILENAMES=1
+HISTFILE=/home1/TR9_Unix/.bash_history
+HISTFILESIZE=1000
+HISTSIZE=1000
+HOME=/home1/TR9_Unix
+HOSTNAME=unix.esg.techmahindra.com
+HOSTTYPE=x86_64
+IFS=$' \t\n'
+INPUTRC=/etc/inputrc
+LANG=en_US.UTF-8
+LESSOPEN='|/usr/bin/lesspipe.sh %s'
+LINES=24
+LOGNAME=TR9_Unix
+LS_COLORS='no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:'
+MACHTYPE=x86_64-redhat-linux-gnu
+MAIL=/var/spool/mail/TR9_Unix
+MAILCHECK=60
+OLDPWD=/home1/TR9_Unix
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=/usr/kerberos/bin:/usr/local/bin:/bin:/usr/bin:/home1/TR9_Unix/bin
+PIPESTATUS=([0]="0")
+PPID=17327
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}"; echo -ne "\007"'
+PS1='[\u@\h \W]\$ '
+PS2='> '
+PS4='+ '
+PWD=/home1/TR9_Unix/KS501632
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:emacs:hashall:histexpand:history:interactive-comments:monitor
+SHLVL=1
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SSH_CLIENT='10.10.86.4 62688 22'
+SSH_CONNECTION='10.10.86.4 62688 10.10.3.160 22'
+SSH_TTY=/dev/pts/3
+TERM=xterm
+UID=6827
+USER=TR9_Unix
+_='~'
+_POSIX2_VERSION=199209
+consoletype=pty
+tmpid=6827
+user1=
+
+
+.profile (.bash_profile in Linux): the script executed during login time 
+
+The .profile must be located in your home directory, and it is executed after /etc/profile, the universal profile for all users
+
+
+[TR9_Unix@unix KS501632]$ echo "Today is `date`"
+Today is Sat Feb 25 13:12:52 IST 2017
+[TR9_Unix@unix KS501632]$ w -hs|awk '{printf "%s\t%s\n",$1,$3}'
+TR9_Unix        10.10.85.155
+TR9_Unix        10.10.84.107
+TR9_Unix        10.10.86.4
+TR14_Uni        10.10.85.122
+TR12_Uni        10.10.86.152
+TR9_Unix        10.10.84.94
+TR9_Unix        10.10.86.19
+TR13_Uni        10.10.86.25
+TR9_Unix        10.10.84.98
+TR13_Uni        10.10.86.53
+TR12_Uni        10.10.86.170
+TR12_Uni        10.10.84.61
+TR9_Unix        10.10.86.13
+TR9_Unix        10.10.84.93
+TR9_Unix        10.10.86.1
+TR14_Uni        10.10.85.217
+TR13_Uni        10.10.86.37
+TR9_Unix        10.10.86.15
+TR9_Unix        10.10.86.9
+TR13_Uni        10.10.86.28
+TR13_Uni        10.10.84.169
+TR13_Uni        10.10.86.56
+TR14_Uni        10.10.85.126
+TR9_Unix        10.10.86.16
+TR13_Uni        10.10.86.63
+TR9_Unix        10.10.84.122
+TR9_Unix        10.10.85.103
+TR13_Uni        10.10.84.76
+TR9_Unix        10.10.84.62
+TR9_Unix        10.10.85.133
+TR9_Unix        10.10.86.7
+TR14_Uni        10.10.85.162
+TR14_Uni        10.10.85.136
+TR12_Uni        10.10.84.146
+TR13_Uni        10.10.86.33
+TR13_Uni        10.10.86.193
+TR12_Uni        10.10.86.175
+TR12_Uni        10.10.86.155
+TR13_Uni        10.10.85.248
+TR12_Uni        10.10.84.131
+TR12_Uni        10.10.86.158
+TR9_Unix        10.10.86.18
+TR12_Uni        10.10.86.178
+TR12_Uni        10.10.92.22
+TR9_Unix        10.10.84.163
+TR9_Unix        10.10.84.144
+TR13_Uni        10.10.85.246
+TR13_Uni        10.10.86.59
+TR12_Uni        10.10.86.173
+TR9_Unix        10.10.85.106
+TR12_Uni        10.10.84.78
+TR12_Uni        10.10.86.177
+TR14_Uni        10.10.85.139
+TR13_Uni        10.10.86.36
+TR14_Uni        10.10.85.42
+TR13_Uni        10.10.86.124
+TR14_Uni        10.10.85.235
+TR12_Uni        10.10.86.158
+TR9_Unix        10.10.84.52
+TR12_Uni        10.10.86.176
+TR14_Uni        10.10.84.207
+TR9_Unix        10.10.84.83
+TR9_Unix        10.10.84.143
+TR12_Uni        10.10.86.160
+TR12_Uni        10.10.86.159
+TR14_Uni        10.10.85.114
+TR13_Uni        10.10.86.65
+TR14_Uni        10.10.84.102
+TR12_Uni        10.10.86.154
+TR12_Uni        10.10.86.174
+TR14_Uni        10.10.85.38
+TR9_Unix        10.10.84.117
+TR12_Uni        10.10.86.162
+TR13_Uni        10.10.85.238
+TR13_Uni        10.10.86.29
+TR12_Uni        10.10.86.163
+TR12_Uni        10.10.86.168
+TR14_Uni        10.10.85.143
+TR13_Uni        10.10.86.122
+TR14_Uni        10.10.84.53
+TR12_Uni        10.10.86.165
+TR12_Uni        10.10.86.167
+TR14_Uni        10.10.84.207
+TR13_Uni        10.10.85.147
+TR9_Unix        10.10.84.129
+[TR9_Unix@unix KS501632]$ ls -lt | cut -d" " -f6-
+
+ 26 Feb 25 13:06 exp
+124 Feb 25 12:42 example
+ 40 Feb 25 11:55 prog.c
+ 54 Feb 25 11:02 testfile1
+ 39 Feb 25 10:49 data2.doc
+ 34 Feb 25 10:49 data1.doc
+  0 Feb 25 10:10 temphu8
+  0 Feb 25 10:10 tempjhuyg12
+  0 Feb 25 10:10 tempuhygyu3
+ 14 Feb 23 15:25 text
+ 48 Feb 23 13:40 text1
+  0 Feb 23 13:34 arb.doc
+  0 Feb 23 13:34 kar.doc
+  0 Feb 23 13:34 lan.doc
+  0 Feb 22 17:22 tem1
+ 49 Feb 22 13:55 so1
+ 91 Feb 22 13:50 testuniq
+Feb 22 12:46 a.out
+ 71 Feb 22 11:00 test4
+ 22 Feb 22 10:56 K1
+ 98 Feb 22 10:27 prog
+ 28 Feb 22 10:17 k3
+ 30 Feb 20 17:38 temp
+ 32 Feb 20 17:36 xyz2
+ 16 Feb 20 17:35 xyz1
+ 16 Feb 20 17:33 xyz
+ 45 Feb 20 17:06 kar
+  0 Feb 20 17:03 a11
+  0 Feb 20 17:03 raj11
+325 Feb 20 15:27 a1
+ 45 Feb 20 15:20 f1.dat
+  3 Feb 20 12:46 a90 -> kar
+
+
+
+
+
