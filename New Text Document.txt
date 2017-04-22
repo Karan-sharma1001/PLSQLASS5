@@ -1,0 +1,417 @@
+[TR9_Unix@unix karan]$ vi ass5
+[TR9_Unix@unix karan]$ sh ass5
+enter roll no for delete
+5
+roll no not found
+mv: cannot stat `stu1': No such file or directory
+[TR9_Unix@unix karan]$ cat student
+2:ka:91:81:091:263:87:Distinction
+2:ka:91:81:81:253:84:Distinction
+2:ka:91:91:91:273:91:third
+9:kae:81:31:41:153:51:third
+31:abx:91:81:71:243:81:third
+50:karan:80:61:90:231:77:third
+[TR9_Unix@unix karan]$ sh ass5
+enter roll no for delete
+50
+50:karan:80:61:90:231:77:third
+do you want  to delete y/n?
+y
+ass5: line 7: y==y: command not found
+mv: cannot stat `stu1': No such file or directory
+[TR9_Unix@unix karan]$ vi ass5
+[TR9_Unix@unix karan]$ sh ass5
+enter roll no for delete
+50
+50:karan:80:61:90:231:77:third
+do you want  to delete y/n?
+y
+[TR9_Unix@unix karan]$ cat student
+2:ka:91:81:091:263:87:Distinction
+2:ka:91:81:81:253:84:Distinction
+2:ka:91:91:91:273:91:third
+9:kae:81:31:41:153:51:third
+31:abx:91:81:71:243:81:third
+[TR9_Unix@unix karan]$ vi ass6
+[TR9_Unix@unix karan]$ cd
+[TR9_Unix@unix ~]$ cd prctice
+-bash: cd: prctice: No such file or directory
+[TR9_Unix@unix ~]$ cd practice
+[TR9_Unix@unix practice]$ ls -l
+total 32
+-rw-r--r-- 1 TR9_Unix practice 211 Mar 14 15:43 addfile
+-rw-r--r-- 1 TR9_Unix practice 115 Mar 14 15:30 ass4
+-rw-r--r-- 1 TR9_Unix practice 125 Mar 14 15:50 assign1
+-rw-r--r-- 1 TR9_Unix practice 370 Mar 14 16:02 deleterecord
+-rw-r--r-- 1 TR9_Unix practice 268 Mar 14 15:21 emp.dat
+-rw-r--r-- 1 TR9_Unix practice 116 Mar 14 15:05 filesearch
+-rw-r--r-- 1 TR9_Unix practice 155 Mar 14 16:03 student
+-rw-r--r-- 1 TR9_Unix practice 359 Mar 14 15:52 updaterecord
+[TR9_Unix@unix practice]$ cat deleterecord
+#s prg for deleting a record in file
+#first we store records not matchng a pattern in another file
+#then remane it by original
+
+this prg for deleting a record in file
+#first we store records not matchng a pattern in another file
+#then remane it by original
+
+login as: TR9_Unix
+Access denied
+TR9_Unix@10.10.3.160's password:
+Last login: Tue Mar 14 16:50:25 2017 from 10.10.86.13
+[TR9_Unix@unix ~]$ cd
+[TR9_Unix@unix ~]$ cd karan
+[TR9_Unix@unix karan]$ cat ass2
+echo "Enter employee Id to be search"
+  read emp
+if grep "^$emp:" emp.dat >> log1
+        then echo "file exists"
+        a="file exist"
+        s=`grep "^$emp:" emp.dat `
+        echo "$s:$a">>log1
+
+        else
+        echo "not exist"
+fi
+[TR9_Unix@unix karan]$ cat ass1
+echo Enter 1st name
+read fname
+echo Enter middle name
+read mname
+echo Enter last name
+read lname
+echo -e "Hello $fname $mname $lname \n Hve a nice day"
+[TR9_Unix@unix karan]$ cat emp.dat
+empid:empname:marks_java:marks_j2ee:marks_unix
+501632:Karan:98:98:77
+501633:Abc:92:93:71
+501634:dac:84:86:74
+[TR9_Unix@unix karan]$ cat ass3
+echo "enter roll no."
+read no
+echo "enter name"
+read n
+echo "enter marks1"
+read m1
+echo "enter marks2"
+read m2
+echo "enter marks3"
+read m3
+
+m=`expr $m1 + $m2 + $m3`
+
+p=`expr $m / 3`
+echo "total marks is $m"
+
+if test $p -lt 35
+then
+a="Fail"
+
+elif test $p -ge 35 -o $p -lt 50
+then a="third"
+
+elif test $p -ge 50 -o $p -lt 60
+then a="second"
+
+elif test $p -ge 60 -o $p -lt 75
+then a="first"
+
+else
+a="Distinction"
+
+fi
+
+echo "$no:$n:$m1:$m2:$m3:$m:$p:$a">>student
+
+[TR9_Unix@unix karan]$ cat student
+2:ka:91:81:091:263:87:Distinction
+2:ka:91:81:81:253:84:Distinction
+2:ka:91:91:91:273:91:third
+9:kae:81:31:41:153:51:third
+31:abx:91:81:71:243:81:third
+[TR9_Unix@unix karan]$ sh ass3
+enter roll no.
+23
+enter name
+ar
+enter marks1
+80
+enter marks2
+40
+enter marks3
+90
+total marks is 210
+[TR9_Unix@unix karan]$ cat student
+2:ka:91:81:091:263:87:Distinction
+2:ka:91:81:81:253:84:Distinction
+2:ka:91:91:91:273:91:third
+9:kae:81:31:41:153:51:third
+31:abx:91:81:71:243:81:third
+23:ar:80:40:90:210:70:third
+[TR9_Unix@unix karan]$ cat ass4
+echo enter rollnumber to be search
+read i
+if grep "^$i:" student
+then echo "found"
+else
+echo "Not found"
+fi
+[TR9_Unix@unix karan]$ cat ass5
+echo "enter roll no for delete"
+read r
+if grep "^$r:" student
+then
+echo "do you want  to delete y/n?"
+read q
+if test $q=="y"
+then
+grep -v "^$r:" student>>stu1
+else
+break
+fi
+else
+echo "roll no not found"
+fi
+mv stu1 student
+[TR9_Unix@unix karan]$ ass6
+-bash: ass6: command not found
+[TR9_Unix@unix karan]$ cat ass6
+echo "1.        Make a file."
+echo "2.        Display contents"
+echo "3.        Copy the file"
+echo "4.        Rename the file"
+echo "5.        Delete the file"
+echo "6.        Exit"
+read ca
+var='y'
+while var=='y'
+case $ca in
+1) echo "Enter filename"
+read f
+   if test -e $f
+then echo "file exists"
+break
+else
+cat>>    $f
+;;
+2)) echo "Enter filename"
+read f
+   if test -e $f
+break
+then
+else
+ echo "File not exist"
+;;
+3) echo "Enter filename"
+read f
+ if test -e $f
+   then  echo "file exist"
+
+    if test -r $f
+           then echo "file is readable"
+                cat f>>new1
+
+     else echo "file is not readable"
+    fi
+else
+;;
+4) echo "Enter filename"
+read f
+ if test -e $f
+   then  echo "file exist"
+
+    if test -r $f
+           then echo "file is readable"
+                mv $f new4
+
+     else echo "file is not readable"
+    fi
+else
+
+;;
+5) echo "Enter filename"
+read f
+ if test -e $f
+   then  echo "file exist"
+
+    if test -w $f
+           then echo "file is readable"
+                echo "want to delete file y/n?"
+                read n
+                if $n=="y"
+                        then rm -r $f
+                        break
+                        else break
+                fi
+
+     else echo "file is not readable"
+    fi
+else break
+fi
+;;
+*)echo "invalid"
+;;
+[TR9_Unix@unix karan]$ cat ass8
+echo "Enter filename"
+read f
+        if test -e $f
+     then       echo "file exists"
+
+ if test -d $f
+   then  echo "file is directory"
+        break
+    else
+         echo "file is ordinary"
+    if test -w $f
+           then echo "file is Writable"
+                ls -l $f
+
+     else echo "file is not writeable"
+                chmod 777 $f
+                ls -l $f
+    fi
+fi
+else echo "file not exists"
+fi
+[TR9_Unix@unix karan]$ vi ass8
+echo "Enter filename"
+read f
+        if test -e $f
+     then       echo "file exists"
+
+ if test -d $f
+   then  echo "file is directory"
+        break
+    else
+         echo "file is ordinary"
+    if test -w $f
+           then echo "file is Writable"
+                ls -l $f
+
+     else echo "file is not writeable"
+                chmod 777 $f
+                ls -l $f
+    fi
+fi
+else echo "file not exists"
+fi
+~
+~
+~
+~
+~
+"ass8" 21L, 362C    
+
+calculate()
+{
+da=`expr $1 / 10`
+hra=`expr $1 / 5`
+echo -e "DA is $da\nHRA is $hra"
+}
+
+echo "empid value is $1"
+echo "Emp_name value is $2"
+echo "Basic salary value is $3"
+
+calculate $3
+echo "$1:$2:$3:$da:$hra">>salary.txt
+[TR9_Unix@unix ~]$
+
+
+add()
+{
+result=`expr 10 + 50`
+echo "$result"
+}
+
+x=`add`
+echo "the returned value of function is $x"
+dd()
+{
+result=`expr 10 + 50`
+echo "$result"
+}
+
+x=`add`
+echo "the returned value of function is $x"
+
+echo "enter batch code"
+read bc
+if  grep "^$bc:" master1
+
+then echo "enter fields RollNo, Name and Marks in JAVA, J2EE and UNIX sequentially"
+read rn
+read n
+read mj
+read j2
+read un
+echo "$rn:$n:$mj:$j2:$un">>$bc
+nos=`expr nos + 1`>$nos
+
+echo
+else
+echo "batchcode not present"
+fi
+
+echo "enter batch code"
+read bc
+echo "enter faculty name"
+read fc
+
+nos=0
+
+
+echo "$bc:$fc:$nos" >> master1
+
+
+echo "enter batch code"
+read bc
+echo "enter faculty name"
+read fc
+
+nos=0
+
+
+echo "$bc:$fc:$nos" >> master1
+[TR9_Unix@unix ~]$ cat master1
+cat: master1: No such file or directory
+[TR9_Unix@unix ~]$ cat main.sh
+
+echo "INVENTORY SYSTEM"
+echo  "===================="
+echo "1.Add Network Element"
+echo "2.Request Network Element"
+echo "3.Exit"
+echo "Enter your choice"
+read c
+
+case $c in
+1) echo "Add network "
+ echo "Network ID"
+        read n
+
+ echo "Element Name "
+        read name
+ echo "Vendor "
+        read v
+ echo "Number of units "
+        read nu
+ echo "Unit cost "
+        read uc
+echo "$n:$name:$v:$nu:$uc">>network.dat
+;;
+
+2) echo "Enter element id"
+        read c
+        if grep "^$c:" network.dat
+then
+        echo "file exists"
+else
+        echo "file not exist"
+fi
+;;
+3)exit
+;;
+
+ 
