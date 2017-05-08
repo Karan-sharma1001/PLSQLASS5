@@ -1,0 +1,280 @@
+1)
+
+create or replace procedure GenerateReport( emp_no number) as
+cursor c1(sal1 number) is select * from emp where sal<sal1; 
+cursor c2(sal1 number) is select * from emp where sal>sal1;
+sal1 emp.sal%type;
+
+begin
+select sal into sal1 from emp where empno=emp_no;
+dbms_output.put_line( 'Employees Getting Salary less than the given Emp No' );
+dbms_output.put_line( 'Sr No.	Empno 	Ename		Manager Name	Deptno'  );
+for v1 in c1(sal1) 
+loop
+dbms_output.put_line('	'||v1.empno||'	'||v1.ename ||'		'||v1.mgr||'	' ||v1.deptno);
+end loop;
+
+dbms_output.put_line( 'Employees Getting Salary greater than the given Emp No' );
+dbms_output.put_line( 'Sr No.	Empno 	Ename		Manager Name	Deptno'  ); 
+for v2 in c2(sal1) 
+loop
+dbms_output.put_line('	'||v2.empno||'		'||v2.ename ||'		'||v2.mgr||'	' ||v2.deptno);
+end loop;
+
+exception
+when no_data_found then
+dbms_output.put_line('Sorry EMPNO not Found');
+end;
+
+
+
+
+========================================
+
+2)
+Create or replace Package Salary_Pack as
+function validateID(deptnoz number) return boolean;
+procedure Salary(deptno1 emp.deptno%type);
+end;
+ 
+/
+
+Create or replace Package body Salary_Pack as
+function validateID(deptnoz number) return boolean as
+deptno1 number;
+begin
+select deptno into deptno1 from dept where deptno=deptnoz;
+return true;
+
+exception
+when no_data_found then
+dbms_output.put_line('Sorry DEPTNO not Found');
+return false;
+end;
+
+
+procedure Salary(deptno1 emp.deptno%type) as
+cursor c1(d emp.deptno%type) is select * from dept where deptno=d;
+namemin emp.ename%type;
+namemax emp.ename%type;
+
+namesum emp.ename%type;
+salarymin emp.sal%type;
+salarymax emp.sal%type;
+salaryavg emp.sal%type;
+salarysum emp.sal%type;
+h dept.dname%type;
+fun boolean;
+begin
+fun:=validateid(deptno1);
+if fun then
+select min(sal),max(sal),avg(sal),sum(sal) into salarymin,salarymax,salaryavg,salarysum from emp;
+for v1 in c1(deptno1) loop
+select ename into namemin from emp where sal=salarymin;
+select ename into namemax from emp where sal=salarymax;
+select dname into h from dept where deptno=deptno1;
+
+dbms_output.put_line(' Department Name is '||h|| '  Department Id is  '||deptno1);
+dbms_output.put_line('maximum salary is '||salarymax ||'       Drawn By =  '||namemax);
+dbms_output.put_line('minimum salary is '||salarymin ||'       Drawn By =  '||namemin);
+dbms_output.put_line('Average salary is '||salaryavg );
+dbms_output.put_line('Total salary is '||salarysum);
+
+end loop;
+
+else
+dbms_output.put_line(' The department id provided is invalid');
+end if;
+exception
+when no_data_found then
+dbms_output.put_line('Sorry DEPTNO not Found');
+
+end;
+
+end;
+
+
+
+
+
+
+
+
+
+Create or replace Package Salary_Pack as
+function validateID(deptnoz number) return boolean;
+procedure Salary(deptno1 emp.deptno%type);
+end;
+ 
+/
+
+Create or replace Package body Salary_Pack as
+function validateID(deptnoz number) return boolean as
+deptno1 number;
+begin
+select deptno into deptno1 from dept where deptno=deptnoz;
+return true;
+
+exception
+when no_data_found then
+dbms_output.put_line('Sorry DEPTNO not Found');
+return false;
+end;
+
+
+procedure Salary(deptno1 emp.deptno%type) as
+
+namemin emp.ename%type;
+namemax emp.ename%type;
+
+namesum emp.ename%type;
+salarymin emp.sal%type;
+salarymax emp.sal%type;
+salaryavg emp.sal%type;
+salarysum emp.sal%type;
+h dept.dname%type;
+fun boolean;
+begin
+fun:=validateid(deptno1);
+if fun then
+select min(sal),max(sal),avg(sal),sum(sal) into salarymin,salarymax,salaryavg,salarysum from emp;
+
+select ename into namemin from emp where sal=salarymin;
+select ename into namemax from emp where sal=salarymax;
+select dname into h from dept where deptno=deptno1;
+
+dbms_output.put_line(' Department Name is '||h|| '  Department Id is  '||deptno1);
+dbms_output.put_line('maximum salary is '||salarymax ||'       Drawn By =  '||namemax);
+dbms_output.put_line('minimum salary is '||salarymin ||'       Drawn By =  '||namemin);
+dbms_output.put_line('Average salary is '||salaryavg );
+dbms_output.put_line('Total salary is '||salarysum);
+
+
+
+else
+dbms_output.put_line(' The department id provided is invalid');
+end if;
+exception
+when no_data_found then
+dbms_output.put_line('Sorry DEPTNO not Found');
+
+end;
+
+end;
+
+
+======================================================
+
+Create or replace package pkg_sal as
+Procedure show_sal (empnop emp.empno%type);
+end;
+
+/ 
+Create or replace package body pkg_sal as
+Function sal_calc(f_empno emp.empno%type) return number as
+a number;
+begin
+
+select empno into a from emp where empno=f_empno;
+return 1;
+exception 
+when no_data_found then
+return 0;
+end;
+
+
+
+
+Procedure show_sal (empnop emp.empno%type) as
+fun number;
+a number;
+s number;
+mi number;
+ma number;
+begin 
+fun:=sal_calc(empnop);
+if (fun = 1)
+then
+select avg(sal),sum(sal),min(sal),max(sal) into a,s,mi,ma from emp where deptno=(select deptno from emp where empno=empnop);
+dbms_output.put_line(' The department Average sal is = '||a||'   Total salary is = '||s);
+dbms_output.put_line(' The department  Maximum salay is  = '||ma);
+dbms_output.put_line(' The department   Minimum salary is = '||mi);
+else
+
+dbms_output.put_line('Sorry EMPNO not Found');
+
+end if;
+end;
+
+end;
+/
+======================================================================
+
+4)
+Create or replace Package pkg_Show_details as
+procedure prEmpDetails (hire_date date);
+procedure prEmpDetails (salary emp.sal%type); 
+end;
+/
+
+Create or replace Package body pkg_Show_details as
+
+procedure prEmpDetails (hire_date date) as
+cursor c1(hire_date1 date) is select * from emp where hiredate<>hire_date1;
+begin
+for v1 in c1(hire_date) loop
+dbms_output.put_line('empno = '||v1.empno||'empname is = '||v1.ename||'salary is = '||v1.sal||'   dept no is =  '||v1.deptno);
+end loop;
+end;
+
+
+procedure prEmpDetails (salary emp.sal%type) as
+cursor c1(salaryf emp.sal%type) is select * from emp where sal<>salaryf;
+begin
+for v1 in c1(salary) loop
+dbms_output.put_line('empno = '||v1.empno||'empname is = '||v1.ename||'salary is = '||v1.sal||'   dept no is =  '||v1.deptno);
+end loop;
+end;
+
+
+end;
+/
+
+
+
+
+
+
+
+
+
+create type order_id as varray(5) of number;
+/
+
+ create type amt as varray(10) of number;
+/
+
+create table book_list(book_code varchar2(10) primary key,order_id order_id,amount amt);
+/
+
+
+
+insert into book_list values('B101',order_id(1),amt(2000));
+
+
+insert into book_list values('B102',order_id(4,7),amt(2500,3070));
+
+
+insert into book_list values('B103',order_id(3,2),amt(5850,7400));
+
+
+
+
+declare
+type book is record (a number, b varchar2(10));
+x book;
+begin
+x.a:=10;
+x.b:='karan';
+dbms_output.put_line(x.a||'      '||x.b);
+end;

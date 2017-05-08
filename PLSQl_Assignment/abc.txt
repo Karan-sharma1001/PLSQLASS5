@@ -1,0 +1,624 @@
+ declare
+ a number:=&m;
+ begin
+ for i in 1..12 loop
+ if(i=a)
+ then
+ dbms_output.put_line(to_date(a,'Mon'));
+ end if;
+end loop;
+end;
+/
+
+
+
+-----------------------------
+declare
+ a number:=&m;
+ begin
+case a
+when 1 then
+dbms_output.put_line('January');
+when 2 then
+dbms_output.put_line('February');
+when 3 then
+dbms_output.put_line('March');
+when 4 then
+dbms_output.put_line('April');
+when 5 then
+dbms_output.put_line('May');
+when 6 then
+dbms_output.put_line('June');
+when 7 then
+dbms_output.put_line('July');
+when 8 then
+dbms_output.put_line('August');
+when 9 then
+dbms_output.put_line('September');
+when 10 then
+dbms_output.put_line('Octomber');
+when 11 then
+dbms_output.put_line('November');
+when 12 then
+dbms_output.put_line('december');
+end case;
+end;
+
+
+
+declare
+ a number:=&m;
+ begin
+case a
+when 1 then
+dbms_output.put_line('January');
+when 2 then
+dbms_output.put_line('February');
+when 3 then
+dbms_output.put_line('March');
+when 4 then
+dbms_output.put_line('April');
+when 5 then
+dbms_output.put_line('May');
+when 6 then
+dbms_output.put_line('June');
+when 7 then
+dbms_output.put_line('July');
+when 8 then
+dbms_output.put_line('August');
+when 9 then
+dbms_output.put_line('September');
+when 10 then
+dbms_output.put_line('Octomber');
+when 11 then
+dbms_output.put_line('November');
+when 12 then
+dbms_output.put_line('december');
+end case;
+end;
+
+
+ declare
+ cursor c is select * from emp;
+ c1 c%rowtype;
+ begin
+ open c;
+ for i in 1..10
+ loop
+ fetch c into c1;
+ dbms_output.put_line('ename     '||lower(c1.ename));
+ end loop;
+ close c;
+ end;
+ /
+
+
+-------------------------------------------------
+declare
+ cursor c is select * from emp;
+ c1 c%rowtype;
+ begin
+ open c;
+ loop
+ fetch c into c1;
+exit when c%notfound;
+ dbms_output.put_line('ename     '||lower(c1.ename));
+ end loop;
+dbms_output.put_line('rowtype notfound');
+close c;
+
+open c;
+loop
+ fetch c into c1;
+exit when c%found;
+ dbms_output.put_line('ename     '||lower(c1.ename));
+ end loop;
+dbms_output.put_line('rowtype found');
+if (c%isopen)
+then
+ close c;
+ end if;
+end;
+ /
+-------------------------------------------------------------------
+PARAMETER CURSOR
+
+declare
+ cursor c(p number) is select * from emp where deptno=p;
+ c1 c%rowtype;
+ begin
+ open c(10);
+dbms_output.put_line('For 10');
+ loop
+ fetch c into c1;
+exit when c%notfound;
+ dbms_output.put_line('ename     '||lower(c1.ename));
+ end loop;
+dbms_output.put_line('rowtype notfound');
+close c;
+
+open c(20);
+dbms_output.put_line('For 20');
+loop
+ fetch c into c1;
+exit when c%notfound;
+ dbms_output.put_line('ename     '||lower(c1.ename));
+ end loop;
+dbms_output.put_line('rowtype found');
+if (c%isopen)
+then
+ close c;
+ end if;
+end;
+ /
+--------------------------------------------------------------------
+
+declare
+ cursor c(p number) is select * from emp where deptno=p;
+  begin
+dbms_output.put_line('For 10');
+for c1 in c(10)
+loop
+dbms_output.put_line('ename  '||c1.ename||'   '||c1.deptno);
+end loop;
+for c1 in c(20)
+loop
+dbms_output.put_line('ename  '||c1.ename||c1.deptno);
+end loop;
+for c1 in c(30)
+loop
+dbms_output.put_line('ename  '||c1.ename||c1.deptno);
+end loop;
+end;
+--------------------------------------------------------------------
+
+
+declare
+cursor c_emp is select * from emp for update of sal;
+
+begin
+
+for v_emp in c_emp
+loop
+if v_emp.deptno=10 then
+update emp set sal=sal*1.3 where current of c_emp;
+dbms_output.put_line('for 10  '||v_emp.sal);
+
+elsif v_emp.deptno=20 then
+update emp set sal=sal*1.2 where current of c_emp;
+dbms_output.put_line('for 20  '||v_emp.sal);
+elsif v_emp.deptno=30 then
+update emp set sal=sal*1.1 where current of c_emp;
+dbms_output.put_line('for 30  '||v_emp.sal);
+end if;
+end loop;
+end;
+=================================
+EXCEPTION
+=====================================
+declare
+ a number;
+ begin
+ a:=10/0;
+exception
+when zero_divide
+ then
+ dbms_output.put_line('Jyada hushar mat ban re');
+end;
+/
+===================================================
+
+declare
+ sal1 emp.sal%type;
+ begin
+ select sal into sal1 from emp where empno=1;
+exception
+when no_data_found
+ then
+ dbms_output.put_line('empno id not found');
+end;
+/
+========================================================
+declare
+ a number(2);
+ begin
+ a:=100000;
+exception
+when others
+ then
+ dbms_output.put_line('exception raised');
+end;
+/
+=======================================================
+declare
+cursor c_emp is select * from emp for update;
+
+begin
+
+close c_emp;
+exception 
+when invalid_cursor
+then
+dbms_output.put_line('cursor not open yet');
+
+end;
+==================================================
+
+declare
+cursor c_emp is select * from emp for update;
+a number;
+begin
+a:=100000/0;
+close c_emp;
+exception 
+when invalid_cursor or zero_divide
+then
+dbms_output.put_line('invalid please chk program');
+
+end;
+=====================================================
+begin
+ 	declare 
+	vas number(3):=10000;
+	z number;
+	begin
+	select sal into z from emp;
+	z:=10/0;
+	end;
+exception
+when no_data_found or value_error then
+dbms_output.put_line('not found');
+when too_many_rows then
+dbms_output.put_line('TOO MANY ROWS');
+when others then
+dbms_output.put_line('Exception raised');
+end;
+============================================================
+
+declare
+deptno_in number;
+still_have_employees EXCEPTION;
+PRAGMA EXCEPTION_INIT(still_have_employees, -2292);
+BEGIN
+deptno_in := &deptno;
+DELETE FROM DEPT WHERE deptno = deptno_in;
+EXCEPTION WHEN still_have_employees THEN
+DBMS_OUTPUT.PUT_LINE('Please delete employees in dept first');
+ROLLBACK;
+-- RAISE; /* Re-raise the current exception. */
+END;
+========================================================
+
+
+declare 
+	vas number(3);
+	z number;
+
+begin
+begin
+vas:=10000;
+exception
+when value_error then
+dbms_output.put_line('value error');
+end;
+z:=10/0;
+
+exception
+
+when zero_divide
+ then
+ dbms_output.put_line('Jyada hushar mat ban re');
+end;
+/
+
+
+
+==========================================================
+
+
+declare 
+mar exception;
+m1 number;
+begin
+m1:=&marks;
+if m1>100 then
+raise mar;
+end if;
+dbms_output.put_line('not error value is  '||m1);
+exception
+when mar then
+dbms_output.put_line('enter proper value');
+end;
+
+=====================================================
+
+1
+SQL> create or replace procedure p1 as
+  2  begin
+  3  dbms_output.put_line('Hello World');
+  4  end;
+  5  /
+
+Procedure created.
+
+SQL> execute p1;
+Hello World
+
+PL/SQL procedure successfully completed.
+
+SQL> begin 
+  2  p1;
+  3  end;
+  4  /
+Hello World
+=============================================
+     create or replace procedure p1 as
+         v emp.sal%type;
+    begin
+     select sal into v from emp where empno=7788;
+   dbms_output.put_line('salary = '||v);
+   end;
+   /
+
+===================================================
+create or replace procedure p1 as
+         v emp.sal%type;
+    begin
+     select sal into v from emp where empno=77;
+   dbms_output.put_line('salary = '||v);
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+==============================================
+create or replace procedure p1 as
+         v emp.sal%type;
+    begin
+
+     select sal into v from emp where empno=7788;
+if v>20000
+
+then
+   dbms_output.put_line('salary = '||v||' earning more than 20000');
+else
+ dbms_output.put_line('salary = '||v||' earning more than 20000');
+
+end if;
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+
+========================================================================
+create or replace procedure get_sal(p_emp number) as
+         v emp.sal%type;
+    begin
+
+     select sal into v from emp where empno=p_emp;
+if v>20000
+
+then
+   dbms_output.put_line('salary = '||v||' earning more than 20000');
+else
+ dbms_output.put_line('salary = '||v||' earning more than 20000');
+
+end if;
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+=================================================
+declare 
+b emp.deptno%type:=&enter_empno;
+
+begin
+get_sal(b);
+end;
+==================================================
+create or replace procedure get_d(b number) as
+         v emp.deptno%type;
+cursor c1 is select * from emp where deptno=b;
+
+    begin
+
+     for v1 in c1
+loop
+
+dbms_output.put_line(v1.empno||' '||v1.ename||' '||v1.sal||' '||v1.deptno);
+end loop;
+
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+
+======
+
+declare 
+b emp.deptno%type:=&enter_empno;
+
+begin
+get_d(b);
+end;
+
+
+======================================================================
+create or replace procedure get_d(b number) as
+         v emp.deptno%type;
+cursor c1(c number) is select * from emp where deptno=c;
+
+    begin
+
+
+     for v1 in c1(b)
+loop
+
+dbms_output.put_line(v1.empno||' '||v1.ename||' '||v1.sal||' '||v1.deptno);
+end loop;
+if sql%rowcount<1 
+then
+raise no_data_found;
+end if;
+
+
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+
+======
+
+declare 
+b emp.deptno%type:=&enter_empno;
+
+begin
+get_d(b);
+end;
+
+=========================================================================
+
+in/OUT VARIABLES
+
+
+
+
+create or replace procedure get_sal1(p_emp emp.empno%type, p_sal out emp.sal%type) as
+         v emp.sal%type;
+
+    begin
+
+     select sal into p_sal from emp where empno=p_emp;
+if v>20000
+
+then
+   dbms_output.put_line('salary = '||p_sal||' earning more than 20000');
+else
+ dbms_output.put_line('salary = '||p_sal||' earning more than 20000');
+
+end if;
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+
+
+======
+
+declare 
+b emp.empno%type:=&enter_sal;
+v emp.sal%type;
+begin
+get_sal1(b, v);
+end;
+===========================================================================================================
+
+IN/OUT
+
+
+create or replace procedure inout(p_emp emp.empno%type, p_sal in out emp.sal%type) as
+         v emp.sal%type;
+
+    begin
+dbms_output.put_line('salary = '||p_sal||' b4 modification');
+
+     select sal into p_sal from emp where empno=p_emp;
+if v>20000
+
+then
+   dbms_output.put_line('salary = '||p_sal||' earning more than 20000 ahter modification');
+else
+ dbms_output.put_line('salary = '||p_sal||' earning more than 20000 after modification');
+
+end if;
+exception
+when no_data_found then
+dbms_output.put_line('Sorry wrong empno');
+   end;
+   /
+
+
+======
+
+declare 
+b emp.empno%type:=&enter_sal;
+v emp.sal%type:=1000;
+begin
+inout(b, v);
+dbms_output.put_line('caller block salary is  '||v);
+end;
+
+
+===============================================================================================================
+
+FUNCTIONS
+
+create or replace function  fun_in(p_emp emp.empno%type) return number as
+         v_sal emp.sal%type;
+
+    begin
+
+     select sal into v_sal from emp where empno=p_emp;
+return v_sal;
+exception
+when others then
+dbms_output.put_line('Sorry wrong empno');
+
+   end;
+   /
+
+
+======
+
+declare 
+b emp.empno%type:=&enter_empid;
+v emp.sal%type;
+begin
+v:=fun_in(b);
+dbms_output.put_line('salary = '||v||'  ');
+end;
+
+=================================================
+
+
+create or replace procedure sal_dis(p_empno emp.empno%type) as
+v_sal emp.sal%type;
+begin
+v_sal:=fun_in(p_empno);
+if v_sal>10000 then
+update emp set sal=sal+1000 where empno=p_empno;
+else
+update emp set sal=sal+2000 where empno=p_empno;
+end if;
+end;
+
+=======================================================
+
+create or replace procedure sal_dis(p_empno emp.empno%type) as
+v_sal emp.sal%type;
+begin
+if fun_in(p_empno)>10000 then
+
+update emp set sal=sal+1000 where empno=p_empno;
+else
+update emp set sal=sal+2000 where empno=p_empno;
+end if;
+end;
+==========================================================
+USING IF 
+
+ 
+begin 
+if get_sal(7788)
+then
+else
+end if;
+end;
+=============================================================
+
+

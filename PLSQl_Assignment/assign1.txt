@@ -1,0 +1,148 @@
+4)
+declare 
+a number:=&num1;
+b number:=&num2;
+c number;
+
+begin
+
+c:=(a/b)+b;
+
+dbms_output.put_line('The Value is'||c);
+
+end;
+
+
+
+
+=-----------------------------------------
+5)
+
+
+declare
+max_salary number;
+min_salary number;
+dept_no number:=&d;
+
+begin
+
+select max(sal) into max_salary from emp where deptno=dept_no;
+
+select min(sal) into min_salary from emp where deptno=dept_no;
+
+dbms_output.put_line('The MaxValue is'||max_salary);
+dbms_output.put_line('The MinValue is'||min_salary);
+
+
+end;
+/
+
+=======================================================
+
+6)
+
+declare
+avg_salary number;
+job number:=&d;
+
+begin
+
+select avg(sal) into avg_salary from emp where job_id=job;
+
+dbms_output.put_line('The AvgValue is'||avg_salary);
+
+end;
+
+=======================================================
+7)
+declare
+salary number;
+emp_i number:=&d;
+
+begin
+
+select sal into salary from emp where empno=emp_i;
+
+dbms_output.put_line('The salary is'||salary);
+
+if (salary < 2500)
+then
+dbms_output.put_line('The salary is'||salary||'  class salary is LOW');
+
+elsif (salary < 5000)
+then
+dbms_output.put_line('The salary is'||salary||'  class salary is MEDIUM');
+
+elsif (salary > 5000)
+then
+dbms_output.put_line('The salary is'||salary||'  class salary is HIGH');
+
+end if;
+end;
+==============================================================================
+
+8)
+
+declare
+ a number:=&m;
+ begin
+case a
+when 1 then
+dbms_output.put_line('January');
+when 2 then
+dbms_output.put_line('February');
+when 3 then
+dbms_output.put_line('March');
+when 4 then
+dbms_output.put_line('April');
+when 5 then
+dbms_output.put_line('May');
+when 6 then
+dbms_output.put_line('June');
+when 7 then
+dbms_output.put_line('July');
+when 8 then
+dbms_output.put_line('August');
+when 9 then
+dbms_output.put_line('September');
+when 10 then
+dbms_output.put_line('Octomber');
+when 11 then
+dbms_output.put_line('November');
+when 12 then
+dbms_output.put_line('december');
+end case;
+end;
+============================================================================
+
+9)
+
+declare
+fact number:=1;
+f1 number:=&d;
+
+begin
+
+loop
+exit when f1=1;
+fact:=fact*f1;
+dbms_output.put_line(fact);
+f1:=f1-1;
+end loop;
+
+dbms_output.put_line('the factorial is ='||fact);
+end;
+=================================================================================
+10)
+declare
+cus_id number;
+plan_id number;
+reg_date date;
+next_bill date;
+pay_mode varchar2(9);
+
+begin
+
+select cust_id into cus_id from customer where cus_id=(select max(cust_id) from customer);
+
+cus_id:=cus_id+1;

@@ -1,0 +1,164 @@
+1)
+
+create or replace type MARKS_TYPE as object
+(Subject VARCHAR2(25),
+midTermMarks NUMBER(3),
+annualMarks NUMBER(3));
+/
+
+
+create table MYMARKS (marks MARKS_TYPE);
+
+insert into MYMARKS values (MARKS_TYPE('Maths',30,90));
+
+insert into MYMARKS values (MARKS_TYPE('English',40,80));
+
+insert into MYMARKS values (MARKS_TYPE('Science',20,90));
+
+
+select m.marks.midTermMarks , m.marks.annualMarks from mymarks m where m.marks.subject like 'English';
+
+
+==================================================
+2)
+
+create or replace type MARKS_TYPE as object
+(Subject VARCHAR2(25),
+midTermMarks NUMBER(3),
+annualMarks NUMBER(3));
+/
+
+
+create table student (studentName VARCHAR2(25)
+,rollNo NUMBER(3) Primary Key,
+Score MARKS_TYPE
+);
+
+insert into student values ('shivi',36,MARKS_TYPE('Maths',30,90));
+
+insert into student values ('Aish',34,MARKS_TYPE('English',40,80));
+
+insert into student values ('Karan',32,MARKS_TYPE('Science',20,90));
+
+
+select m.marks.midTermMarks , m.marks.annualMarks from mymarks m;
+
+====================================================
+
+pract 2)
+
+create or replace type Cust_type as object
+(Cust_id number, Cust_Name varchar2(20),Plan_Name varchar2(20));
+
+
+Create type CUST_DETAILS as  varray(5) of CUST_Type ;
+
+
+Create table Cust_Tab_details(Srno Number(10) primary Key ,
+Cust_Info CUST_DETAILS,Cust_number Number(10));
+
+
+insert into cust_tab_details values(10,cust_details  (cust_type (10,'Shivi','Plan_Plsql') , cust_type(10,'shivi','SQL')) ,10);
+
+
+
+insert into cust_tab_details values(20,cust_details  (cust_type (20,'Karan','Plan_Billionaire') , cust_type(20,'KAran','Bodybuiliding')) ,20);
+
+declare
+cursor c1 is select * from Cust_Tab_details;
+varr cust_details;
+begin
+for v in c1
+loop
+select cust_info into varr from cust_tab_details where srno=v.srno;
+
+for x in 1..varr.count
+loop
+dbms_output.put_line('srno = '||v.srno);
+end loop;
+end loop;
+end;
+/
+========================================================
+pract 4)
+
+create type paper_obj as  object 
+(
+paperid number,
+     paperName varchar2(10),
+     publishDate date
+);
+/
+
+Create type paper_details is varray(10) of paper_obj ;
+/
+Create table Author_Tab(
+Authorid Number(10) Primary Key ,AuthorName Varchar2(20),Paper paper_details
+);
+
+insert into author_tab values(1001,'Bhagat',paper_details(paper_obj(1,'Dainik_','01-jan-2017'),paper_obj(2,'_Bhaskar','01-jan-2017')));
+
+
+insert into author_tab values(1001,'Bhagat',paper_details(paper_obj(1,'Dainik_','01-jan-2017'),paper_obj(2,'_Bhaskar','01-jan-2017')));
+
+
+insert into author_tab values(1002,'Bhagat',paper_details(paper_obj(3,'Sakal_','01-feb-2017'),paper_obj(4,'_Lokmat','31-jan-2017')));
+
+
+=======================================================
+6)
+INCREMENT_TYPE 
+create type INCREMENT_TYPE as  object (
+Incr_ID	NUMBER (3)
+,Incr_Date	DATE
+,Incr_Amt	NUMBER (7)
+);
+/
+Create type SKILLS_TYPE as object(
+Skill_Id	NUMBER (2),
+Skill_Name	VARCHAR2(20),
+Skill_rating	NUMBER (2)
+
+);
+
+
+
+
+Create table EMP_DETAIL 
+(Emp_No	NUMBER (4),
+Emp_Name	CHAR (30),
+Emp_Skills	SKILLS_TYPE
+,Emp_Incr	INCREMENT_TYPE
+);
+
+
+
+===========================================================
+
+pract 1)
+Create type SKILLS_TYPE as  object 
+(
+Skill_Id	NUMBER (2)
+,Skill_Name	VARCHAR2(20)
+,Skill_rating	NUMBER (2)
+);
+
+
+create type SKILL_TAB_TYPE as table of SKILLS_type;
+/
+
+create table emp_skills(empid number,skill skill_tab_type)
+nested table skill store as skill_tab_types;
+
+insert into emp_skills values(1001,skill_tab_type(skills_type(1,'SQL',2),skills_type(2,'PLSQL',4)));
+=================================================================
+
+pract 3)
+
+Create table EMPMAIN(
+Emp_No	NUMBER (4)	PRIMARY KEY
+,Emp_Name	CHAR (30)	
+,All_Skills	SKILL_TAB_TYPE	
+) nested table all_skills store as all_skills_tab ; 
+
+insert into empmain values(1001	,'Aman_Dev',skill_tab_type(skills_type(10,'Design',9),skills_type(11,'Code',8),skills_type(12,'Test',10)));

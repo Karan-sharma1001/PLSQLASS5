@@ -1,0 +1,177 @@
+1)
+create table MESSAGES(err_msg varchar2(250));
+
+declare
+salary number:=&salar;
+a emp.ename%type;
+
+begin
+
+select ename into a from emp where sal=salary;
+dbms_output.put_line(a||'  have the salary '||salary);
+insert into messages values (a);
+
+exception
+
+when no_data_found
+ then
+ dbms_output.put_line('No employee with salary of'||salary);
+insert into messages values ('No employee with salary of'||salary);
+
+when too_many_rows then
+dbms_output.put_line('TOO MANY ROWS'||' More than one employee with salary of' ||salary);
+insert into messages values ('TOO MANY ROWS'||' More than one employee with salary of');
+
+
+when others
+ then
+dbms_output.put_line('Some other error occurred');
+insert into messages values ('Some other error occurred');
+
+end;
+
+=======================================================
+2)
+
+declare
+DUPLICATE_DEPT exception;
+deptr dept%rowtype;
+n number:=&n;
+name varchar2(14):='&name';
+location varchar2(13):='&location';
+pragma exception_init(DUPLICATE_DEPT,-00001);
+ 
+begin
+
+insert into dept values(n,name,location);
+
+dbms_output.put_line('no error');
+
+exception
+
+when DUPLICATE_DEPT then
+dbms_output.put_line('Values are duplicated Please try again later');
+end;
+/
+
+
+========================================================
+3)
+
+declare
+DUPLICATE_PRESIDENT exception;
+pragma exception_init(DUPLICATE_PRESIDENT,-01422);
+
+x emp%rowtype;
+begin
+select * into x from emp ;
+
+
+
+dbms_output.put_line('no error');
+
+exception
+when DUPLICATE_PRESIDENT then
+
+dbms_output.put_line('Error');
+
+end;
+
+
+
+
+======================================================
+4)
+declare
+empno1 number:=&empno1;
+empno2 number:=&empno2;
+sal1 number;
+sal2 number;
+
+begin
+begin
+select sal into sal1 from emp where empno=empno1;
+update emp set sal=sal*1.1 where empno=empno1;
+
+exception
+
+when no_data_found
+then 
+dbms_output.put_line('Sorry no employee with empno'||empno1);
+end;
+
+select sal into sal2 from emp where empno=empno2;
+update emp set sal=sal*1.2 where empno=empno2;
+exception
+
+when no_data_found
+then 
+dbms_output.put_line('Sorry no employee with empno'||empno2);
+end;
+
+======================================
+
+
+4)
+
+
+
+
+
+declare
+empno1 number:=&empno1; 
+empno2 number:=&empno2;
+sal1 number;
+sal2 number;
+e1 number:=0;
+e2 number:=0;
+
+begin
+begin
+begin
+select sal into sal1 from emp where empno=empno1;
+update emp set sal=sal*1.1 where empno=empno1;
+
+exception
+
+when no_data_found
+then 
+e1:=1;
+
+
+end;
+
+select sal into sal2 from emp where empno=empno2;
+update emp set sal=sal*1.2 where empno=empno2;
+
+
+exception
+
+when no_data_found
+then 
+e2:=1;
+
+end;
+if (e1=1 or e2=1 )
+then
+raise no_data_found;
+end if;
+exception
+
+when no_data_found
+then 
+if (e1=1 and e2=1)
+then
+dbms_output.put_line('Sorry Both employee are not present');
+elsif (e1=1 and e2=0)
+then
+dbms_output.put_line('Sorry employee1 is not present');
+
+elsif (e1=0 and e2=1)
+then
+dbms_output.put_line('Sorry employee1 is not present');
+end if;
+end;
+==================================================================================
+
+

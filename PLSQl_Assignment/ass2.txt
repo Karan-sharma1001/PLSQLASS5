@@ -1,0 +1,132 @@
+1)
+
+
+ declare
+ a number:=&num;
+ cursor c is select * from emp where deptno=a;
+ c1 c%rowtype;
+ begin
+ open c;
+ loop
+ fetch c into c1;
+ exit when c%notfound;
+ dbms_output.put_line('salary updated is '|| c1.sal*1.1);
+ end loop;
+ ======================================================
+declare
+a number:=&ba;
+begin
+update emp set sal=sal*1.1 where deptno=a;
+if sql%found
+then
+dbms_output.put_line('Record Updated'||sql%rowcount);
+end if;
+end;
+
+
+=======================================================
+
+3)
+
+
+declare
+cursor c_emp is select * from emp for update;
+
+begin
+
+for v_emp in c_emp
+loop
+if lower(v_emp.job)='clerk' then
+dbms_output.put_line('for CLERK  '||v_emp.job||'Ename is '||v_emp.ename||'  salary is'||v_emp.sal);
+end if;
+end loop;
+end;
+
+===========================================================
+5)
+declare
+cursor c_emp is select * from emp for update;
+
+begin
+
+for v_emp in c_emp 
+loop
+if v_emp.deptno=10 and lower(job)='sh_clerk'
+then
+update emp set sal=sal*1.3 where current of c_emp;
+dbms_output.put_line('for 10  '||v_emp.sal);
+
+elsif v_emp.deptno=20 and lower(job)='sh_clerk'
+then
+update emp set sal=sal*1.2 where current of c_emp;
+dbms_output.put_line('for 20  '||v_emp.sal);
+else
+update emp set sal=sal*1.1 where current of c_emp;
+dbms_output.put_line('for 30  '||v_emp.sal);
+end if;
+end loop;
+end;
+=================================================
+6)
+
+declare
+cursor c_emp is select * from emp;
+cursor c_dept is select * from dept;
+
+begin
+
+for v_dept in c_dept 
+loop
+dbms_output.put_line('Department ID:'||v_dept.deptno||'          Department name '||v_dept.dname);
+dbms_output.put_line('----------------------------------------------------------------------------');
+
+for v_emp in c_emp
+loop
+
+if(v_dept.deptno=v_emp.deptno)
+
+then
+dbms_output.put_line('Employee ID:'||v_emp.empno||'   Employee name '||v_emp.ename ||'salary'||v_emp.sal);
+end if;
+
+end loop;
+dbms_output.put_line('----------------------------------------------------------------------------');
+
+end loop;
+end;
+
+
+=====================================================
+4)
+
+declare
+job_id varchar2(9):='&a';
+cursor c_emp(job_1 varchar2) is select * from emp where lower(job) like job_1;
+
+begin
+
+for v_emp in c_emp(job_id) 
+loop
+dbms_output.put_line('for selected job  '||job_id ||'         salary=='||v_emp.sal);
+
+end loop;
+end;
+/
+=========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
